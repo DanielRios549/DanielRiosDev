@@ -23,9 +23,14 @@
         "incremental": true,
         "module": "esnext",
         "isolatedModules": true,
+        "paths": {
+            "$api/*": ["pages/api/*"],
+            "$/*": ["src/*"]
+        }
     },
     "include": [
         "pages/**/*.tsx",
+        "pages/**/*.ts",
         "src/**/*.ts",
         "src/**/*.d.ts",
         "**/*.test.ts"

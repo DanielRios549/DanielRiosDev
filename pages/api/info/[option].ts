@@ -1,13 +1,7 @@
-import { createClient } from '@supabase/supabase-js'
+import { supabase, prefix } from '$api/connection'
 import type { NextApiHandler } from 'next'
 
 const handler: NextApiHandler = async (req, res) => {
-    const prefix = process.env.PREFIX || ''
-    const supabase = createClient(
-        process.env.API_URL || '',
-        process.env.API_KEY || ''
-    )
-
     const { option } = req.query
     const get = await supabase.from('Options')
         .select('value')
