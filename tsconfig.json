@@ -11,6 +11,7 @@
         "checkJs": true,
         "jsx": "preserve",
         "esModuleInterop": true,
+        "importsNotUsedAsValues": "error",
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "moduleResolution": "node",
@@ -23,9 +24,6 @@
         "incremental": true,
         "module": "esnext",
         "isolatedModules": true,
-        "paths": {
-            "$/*": ["src/*"]
-        }
     },
     "include": [
         "pages/**/*.tsx",

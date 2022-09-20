@@ -1,32 +1,28 @@
 import Head from 'next/head'
 import type { GetStaticProps } from 'next'
+import type { Page } from 'src/types'
 
 import style from 'styles/pages/index.module.scss'
 
-type Props = {
-    title: string
-}
-
-export default function Home({ title }: Props) {
+export default function Home({ title, description }: Page) {
     return (
         <>
             <Head>
                 <title>{title}</title>
+                <meta name="description" content={description}/>
             </Head>
-            <main id={style.main}>
-                <h1>Coming soon</h1>
-            </main>
+            <h1 id={style.message}>Coming soon</h1>
         </>
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Page> = async () => {
     const url = process.env.URL
 
-    const get = await fetch(`${url}/api/info/title`)
-    const title = await get.json()
+    const { title, description } = await (await fetch(`${url}/api/info/all`)).json() as Page
 
     return {
-        props: { title }
+        props: { title, description },
+        revalidate: 10
     }
 }

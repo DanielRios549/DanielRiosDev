@@ -1,11 +1,23 @@
 @use "./reset";
 
 #__next {
+    $header: 60px;
+    $vh: var(--vh, 100vh);
     background-color: #202225;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    height: $vh;
     width: 100vw;
-    flex-grow: 1;
+    display: grid;
+    place-content: center;
+    grid-template:
+        "header" $header
+        "main" calc($vh - $header)
+        / 100vw
+    ;
+
+    header {
+        grid-area: header;
+    }
+    main {
+        grid-area: main;
+    }
 }

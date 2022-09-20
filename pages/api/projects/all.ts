@@ -4,6 +4,7 @@ import type { Project } from 'src/types'
 
 const handler: NextApiHandler<Project[]> = async (req, res) => {
     const get = await supabase.from('Projects')
+        .select('name, stack, repo, link')
 
     if (get.data && get?.data?.length >= 1) {
         res.status(200).json(get?.body)
