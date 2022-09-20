@@ -24,7 +24,6 @@
         "module": "esnext",
         "isolatedModules": true,
         "paths": {
-            "$api/*": ["pages/api/*"],
             "$/*": ["src/*"]
         }
     },

@@ -1,6 +1,6 @@
-import { supabase } from '$api/connection'
+import { supabase } from 'pages/api/connection'
 import type { NextApiHandler } from 'next'
-import type { Project } from '$/types'
+import type { Project } from 'src/types'
 
 const handler: NextApiHandler<Project[]> = async (req, res) => {
     const get = await supabase.from('Projects')

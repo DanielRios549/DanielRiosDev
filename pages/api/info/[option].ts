@@ -1,4 +1,4 @@
-import { supabase, prefix } from '$api/connection'
+import { supabase, prefix } from 'pages/api/connection'
 import type { NextApiHandler } from 'next'
 
 const handler: NextApiHandler = async (req, res) => {
