@@ -31,11 +31,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const url = process.env.URL
     const api = `${url}/api`
 
-    const title = await (await fetch(`${api}/info/projects-title`)).json()
+    const { title, description } = await (await fetch(`${api}/info/all?page=projects`)).json() as Page
     const projects = await (await fetch(`${api}/projects/all`)).json()
 
     return {
-        props: { title, projects },
+        props: { title, description, projects },
         revalidate: 10
     }
 }
