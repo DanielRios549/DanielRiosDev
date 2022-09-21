@@ -1,0 +1,25 @@
+body#light {
+    --color1: #eeeeee;
+    --color2: #ffffff;
+    --color3: #e4e4e4;
+    --text: #313131;
+    --text2: #8D8592;
+    --icon: #313131;
+    --white: #eeeeee;
+    --highlight: #17e9cd;
+    --error: #fb3c3c;
+    --radius: 5px;
+}
+body,
+body#dark {
+    --color1: #202225;
+    --color2: #36393F;
+    --color3: #2e3033;
+    --text: #D6D6D6;
+    --text2: #8D8592;
+    --icon: #D6D6D6;
+    --white: #eeeeee;
+    --highlight: #17e9cd;
+    --error: #fb3c3c;
+    --radius: 5px;
+}

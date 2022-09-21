@@ -1,9 +1,10 @@
 @use "./reset";
+@use "./themes";
 
 #__next {
     $header: 60px;
     $vh: var(--vh, 100vh);
-    background-color: #202225;
+    background-color: var(--color1);
     height: $vh;
     width: 100vw;
     display: grid;

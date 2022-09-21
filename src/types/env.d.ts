@@ -7,6 +7,7 @@ declare global {
             readonly PROJECT: string
             readonly API_URL: string
             readonly API_KEY: string
+            readonly ISR_REVALIDATE: string
         }
     }
 }

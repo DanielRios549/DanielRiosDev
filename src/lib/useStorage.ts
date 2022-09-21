@@ -1,16 +1,14 @@
 import { useState, useCallback, Dispatch, SetStateAction } from 'react'
 
-type EmptyObject = Record<string, any>
-
-export function useLocalStorage<T = undefined>(key: string, value: string | [] | EmptyObject) {
+export function useLocalStorage<T = undefined>(key: string, value: T) {
     return useStorage<T>(key, value, true)
 }
 
-export function useSessionStorage<T = undefined>(key: string, value: string | [] | EmptyObject) {
+export function useSessionStorage<T = undefined>(key: string, value: T) {
     return useStorage<T>(key, value, false)
 }
 
-function useStorage<T>(key: string, value: string | [] | EmptyObject, persist: boolean): [T, Dispatch<SetStateAction<T>>] {
+function useStorage<T>(key: string, value: T, persist: boolean): [T, Dispatch<SetStateAction<T>>] {
     const [state, setState] = useState<T>(() => {
         try {
             const stored = persist === true ? localStorage.getItem(key) : sessionStorage.getItem(key)

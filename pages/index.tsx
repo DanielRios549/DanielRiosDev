@@ -17,12 +17,12 @@ export default function Home({ title, description }: Page) {
 }
 
 export const getStaticProps: GetStaticProps<Page> = async () => {
-    const url = process.env.URL
+    const api = `${process.env.URL}/api`
 
-    const { title, description } = await (await fetch(`${url}/api/info/all`)).json() as Page
+    const { title, description } = await (await fetch(`${api}/info/all`)).json() as Page
 
     return {
         props: { title, description },
-        revalidate: 10
+        revalidate: Number(process.env.ISR_REVALIDATE) || 60 * 60 * 6
     }
 }

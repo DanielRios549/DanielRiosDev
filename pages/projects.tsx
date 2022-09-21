@@ -28,14 +28,13 @@ export default function Projects({ title, projects, description }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const url = process.env.URL
-    const api = `${url}/api`
+    const api = `${process.env.URL}/api`
 
     const { title, description } = await (await fetch(`${api}/info/all?page=projects`)).json() as Page
     const projects = await (await fetch(`${api}/projects/all`)).json()
 
     return {
         props: { title, description, projects },
-        revalidate: 10
+        revalidate: Number(process.env.ISR_REVALIDATE) || 60 * 60 * 24
     }
 }
