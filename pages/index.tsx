@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import type { GetStaticProps } from 'next'
 import type { Page } from 'src/types'
@@ -23,6 +24,6 @@ export const getStaticProps: GetStaticProps<Page> = async () => {
 
     return {
         props: { title, description },
-        revalidate: Number(process.env.ISR_REVALIDATE) || 60 * 60 * 6
+        revalidate: Number(process.env.ISR_REVALIDATE) || 60 * 60 * 24
     }
 }

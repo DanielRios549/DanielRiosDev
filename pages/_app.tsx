@@ -1,13 +1,16 @@
 import React from 'react'
 import Head from 'next/head'
+import Menu from 'src/components/Menu'
+import { useMenu, useTheme } from 'src/stores/config'
 import type { AppProps } from 'next/app'
+import type { Themes } from 'src/types/stores'
 
 import '../styles/app.scss'
-import { useLocalStorage } from 'src/lib/useStorage'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-    const themes = ['light', 'dark']
-    const [theme, setTheme] = useLocalStorage('theme', themes[0])
+    const themes: Themes[] = ['light', 'dark']
+    const [theme, setTheme] = useTheme()
+    const [menu, setMenu] = useMenu()
 
     const changeTheme = () => {
         const current = themes.findIndex((search) => search === theme)
@@ -36,7 +39,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             </Head>
             <header>
                 <h1>Page Header</h1>
+                <Menu/>
                 <button onClick={changeTheme}>Change</button>
+                <button onClick={() => setMenu(!menu)}>Open</button>
             </header>
             <main>
                 <Component {...pageProps} />

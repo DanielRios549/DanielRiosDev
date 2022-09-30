@@ -1,0 +1,30 @@
+#menu {
+    box-shadow: 5px 2px 20px rgba(#000000, 0.5);
+    background-color: var(--color2);
+    height: var(--vh, 100vh);
+    position: absolute;
+    top: 0;
+    width: min(80vw, 350px);
+    transition: left 200ms ease;
+
+    &:global(.open) {
+        left: 0px;
+    }
+    &:global(.close) {
+        left: -100%;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+
+        li {
+            height: 60px;
+            padding-left: 20px;
+
+            a {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
