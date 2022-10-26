@@ -32,7 +32,7 @@ const config = {
     }),
     kit: {
         adapter: adapter({
-            edge: true
+            split: true
         }),
         files: {
             routes: 'pages',
