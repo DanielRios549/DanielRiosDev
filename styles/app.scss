@@ -1,7 +1,7 @@
 @use "./reset";
 @use "./themes";
 
-#__next {
+body {
     $header: 60px;
     $vh: var(--vh, 100vh);
     background-color: var(--color1);

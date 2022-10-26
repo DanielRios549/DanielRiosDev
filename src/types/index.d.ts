@@ -1,3 +1,4 @@
-export * from 'src/types/project'
-export * from 'src/types/page'
-export * from 'src/types/config'
+export * from './project'
+export * from './page'
+export * from './config'
+export * from './stores'

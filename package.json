@@ -4,30 +4,44 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "preview": "next start",
-        "export": "next build && next export",
-        "lint": "next lint"
+        "dev": "vite dev",
+        "build": "vite build",
+        "preview": "vite preview",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+        "lint": "eslint ."
     },
     "dependencies": {
-        "@supabase/supabase-js": "^1.35.6",
-        "jotai": "^1.8.4",
-        "next": "12.2.5",
-        "react": "18.2.0",
-        "react-dom": "18.2.0"
+        "@supabase/supabase-js": "^1.35.6"
     },
     "devDependencies": {
+        "@poppanator/sveltekit-svg": "^1.0.0",
+        "@sveltejs/adapter-netlify": "^1.0.0-next.81",
+        "@sveltejs/kit": "^1.0.0-next.525",
         "@types/node": "^18.7.14",
-        "@types/react": "^18.0.18",
         "@typescript-eslint/eslint-plugin": "^5.36.1",
+        "@typescript-eslint/parser": "^5.41.0",
+        "autoprefixer": "^10.4.12",
+        "dotenv": "^16.0.3",
         "eslint": "8.23.0",
-        "eslint-config-next": "12.2.5",
         "eslint-config-standard": "^17.0.0",
-        "eslint-plugin-n": "^15.2.5",
-        "eslint-plugin-promise": "^6.0.1",
-        "eslint-plugin-react": "^7.31.4",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-n": "^15.3.0",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-svelte3": "^4.0.0",
+        "postcss": "^8.4.18",
+        "postcss-custom-media": "^8.0.2",
+        "postcss-custom-selectors": "^6.0.3",
+        "postcss-extend-rule": "^4.0.0",
+        "postcss-import": "^15.0.0",
+        "postcss-media-minmax": "^5.0.0",
+        "postcss-nested": "^6.0.0",
+        "postcss-simple-vars": "^7.0.0",
         "sass": "^1.54.8",
-        "typescript": "^4.8.2"
+        "svelte": "^3.44.0",
+        "svelte-check": "^2.7.1",
+        "svelte-preprocess": "^4.10.6",
+        "typescript": "^4.8.2",
+        "vite": "^3.1.0"
     }
 }

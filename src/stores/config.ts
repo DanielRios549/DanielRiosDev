@@ -1,5 +1,5 @@
-import { useStorage } from 'src/lib/useStorage'
-import type { Themes } from 'src/types/stores'
+import { savable } from '$/lib/store'
+import type { Theme } from '$/types'
 
-export const useMenu = () => useStorage<boolean>('menu', false, false)
-export const useTheme = () => useStorage<Themes>('theme', 'dark', true)
+export const menu = savable<boolean>('menu', false, false)
+export const theme = savable<Theme>('theme', 'dark', true)

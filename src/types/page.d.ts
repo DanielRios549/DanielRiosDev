@@ -1,4 +1,9 @@
+import type { Project } from './project'
+import type { Options } from './config'
+
+export type Pages = 'home' | 'projects'
+
 export interface Page {
-    title: string
-    description: string
+    projects: Project[]
+    options: Options
 }
