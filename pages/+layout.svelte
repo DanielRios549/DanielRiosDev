@@ -4,11 +4,12 @@
     import { wait } from '$/lib'
     import { menu, theme, projects, options } from '$/stores'
     import Menu from '$/components/Menu.svelte'
-    import type { Theme, Page } from '$/types'
+    import type { Theme } from '$/types'
+    import type { LayoutServerData } from './$types'
 
     const themes: Theme[] = ['light', 'dark']
 
-    export let data: Page
+    export let data: LayoutServerData
 
     $: {
         $projects = data.projects

@@ -34,6 +34,7 @@
     "include": [
         "pages/**/*.svelte",
         "pages/**/*.ts",
+        "pages/**/*.server.ts",
         "src/**/*.svelte",
         "src/**/*.ts",
         "src/**/*.d.ts",
