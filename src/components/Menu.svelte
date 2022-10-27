@@ -18,28 +18,33 @@
 
 <style lang="postcss">
     nav {
-        box-shadow: 5px 2px 20px rgba(#000000, 0.5);
-        background-color: var(--color2);
+        background-color: var(--color1);
         height: var(--vh, 100vh);
         position: absolute;
-        top: 0;
-        width: min(80vw, 350px);
-        transition: left 200ms ease;
+        top: 60px;
+        width: 100vw;
+        transition: top 200ms ease;
+        display: flex;
+        justify-content: center;
+        z-index: 10;
 
-        .open {
-            left: 0px;
-        }
         &:not(.open) {
-            left: -100%;
+            top: -100%;
         }
         ul {
             display: flex;
+            gap: 2px;
             flex-direction: column;
+            width: min(300px, 70vw);
+            height: auto;
 
             li {
                 height: 60px;
                 padding-left: 20px;
 
+                &:not(:last-child) {
+                    border-bottom: 2px solid var(--color2);
+                }
                 a {
                     display: flex;
                     align-items: center;

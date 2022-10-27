@@ -31,7 +31,6 @@ export const load: LayoutServerLoad = async () => {
 
     return {
         projects: projects.data || [],
-        options: options || {},
-        test: 1
+        options: options || {}
     }
 }

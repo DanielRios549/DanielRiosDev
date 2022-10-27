@@ -10,7 +10,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-h1, h2, h3, h4, h5, h6, span, p {
+:--text {
     color: var(--text);
 }
 li {
@@ -38,14 +38,13 @@ fieldset {
     border: none;
 }
 button {
+    background-color: var(--color1);
     border: none;
     cursor: pointer;
 }
-input, textarea{
+:--input {
     border: none;
     outline: none;
-}
-input {
     background-color: var(--primary);
     color: var(--text);
     height: 40px;
@@ -55,6 +54,6 @@ input {
         outline: 2px solid var(--text);
     }
 }
-input[type="submit"] {
+:--submit {
     cursor: pointer;
 }
