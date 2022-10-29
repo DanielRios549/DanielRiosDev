@@ -17,34 +17,79 @@
 </nav>
 
 <style lang="postcss">
+    @media (--desktop) {
+        nav {
+            grid-area: menu;
+            position: relative;
+            justify-content: flex-end;
+
+            ul {
+                flex-direction: row;
+                column-gap: 10px;
+
+                li {
+                    position: relative;
+
+                    a {
+                        width: 100px;
+                        justify-content: center;
+
+                        &:hover::after {
+                            width: 100%;
+                        }
+                        &::after {
+                            content: '';
+                            background-color: var(--text);
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            height: 3px;
+                            width: 0;
+                            transition: width 200ms ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (--touch) {
+        nav {
+            position: absolute;
+            top: 60px;
+            width: 100vw;
+            justify-content: center;
+
+            &:not(.open) {
+                top: -100%;
+            }
+            ul {
+                flex-direction: column;
+                gap: 2px;
+                width: min(300px, 70vw);
+
+                li{
+                    padding-left: 20px;
+
+                    &:not(:last-child) {
+                        border-bottom: 2px solid var(--color2);
+                    }
+                }
+            }
+        }
+    }
     nav {
         background-color: var(--color1);
-        height: var(--vh, 100vh);
-        position: absolute;
-        top: 60px;
-        width: 100vw;
         transition: top 200ms ease;
         display: flex;
-        justify-content: center;
         z-index: 10;
 
-        &:not(.open) {
-            top: -100%;
-        }
         ul {
             display: flex;
-            gap: 2px;
-            flex-direction: column;
-            width: min(300px, 70vw);
             height: auto;
 
             li {
                 height: 60px;
-                padding-left: 20px;
 
-                &:not(:last-child) {
-                    border-bottom: 2px solid var(--color2);
-                }
                 a {
                     display: flex;
                     align-items: center;

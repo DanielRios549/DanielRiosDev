@@ -1,3 +1,4 @@
+@use "./breakpoints";
 @use "./reset";
 @use "./themes";
 
@@ -9,18 +10,19 @@ body {
     width: 100vw;
     display: grid;
     place-content: center;
-    grid-template:
-        "header" $header
-        "main" calc($vh - $header)
-        / 100vw
-    ;
 
-    header {
-        grid-area: header;
-        display: flex;
-        justify-content: space-between;
+    @media (--desktop) {
+        grid-template:
+            "header menu" $header
+            "main main" calc($vh - $header)
+            / 1fr 1fr
+        ;
     }
-    main {
-        grid-area: main;
+    @media (--touch) {
+        grid-template:
+            "header" $header
+            "main" calc($vh - $header)
+            / 100vw
+        ;
     }
 }

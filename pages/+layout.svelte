@@ -62,52 +62,64 @@
 
 <style lang="scss">
     :global {
-        @import "../styles/app.scss";
+        @import "../styles/app";
     }
     header {
+        grid-area: header;
+        display: flex;
+        justify-content: space-between;
         z-index: 11;
 
         button {
-            width: 60px;
             @extend %center;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 7px;
-            padding: 10px;
 
-            &.open {
-                span:nth-of-type(1) {
-                    top: 25%;
-                    width: 80%;
-                    transform: rotate(135deg);
-                }
-                span:nth-of-type(2) {
-                    top: 0;
-                    width: 80%;
-                    transform: rotate(45deg);
-                }
-                span:nth-of-type(3) {
-                    opacity: 0;
-                }
+            @media (--desktop) {
+                display: none !important;
             }
-            span {
-                position: relative;
-                border-radius: 10px;
-                background-color: var(--text2);
-                display: block;
-                height: 3px;
-                transition: transform 200ms ease;
+            @media (--touch) {
+                width: 60px;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 7px;
+                padding: 10px;
 
-                &:nth-of-type(1) {
-                    width: 50%;
+                &.open {
+                    span:nth-of-type(1) {
+                        top: 25%;
+                        width: 80%;
+                        transform: rotate(135deg);
+                    }
+                    span:nth-of-type(2) {
+                        top: 0;
+                        width: 80%;
+                        transform: rotate(45deg);
+                    }
+                    span:nth-of-type(3) {
+                        opacity: 0;
+                    }
                 }
-                &:nth-of-type(2) {
-                    width: 80%;
+                span {
+                    position: relative;
+                    border-radius: 10px;
+                    background-color: var(--text);
+                    display: block;
+                    height: 3px;
+                    transition: transform 200ms ease;
+
+                    &:nth-of-type(1) {
+                        width: 50%;
+                    }
+                    &:nth-of-type(2) {
+                        width: 80%;
+                    }
+                    &:nth-of-type(3) {
+                        width: 40%;
+                    }
                 }
-                &:nth-of-type(3) {
-                    width: 40%;
-                }
-            }
         }
+        }
+    }
+    main {
+        grid-area: main;
     }
 </style>
