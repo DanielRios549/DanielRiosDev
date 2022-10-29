@@ -12,6 +12,8 @@ export const load: LayoutServerLoad = async () => {
     const projects = await supabase.from('Projects')
         .select('name, stack, repo, link')
 
+    const menus = await supabase.from('Menus').select('location, items')
+
     const optionsList = await supabase.from<Record<string, string>>(`${project}_Options`)
         .select('option, value')
 
@@ -31,6 +33,7 @@ export const load: LayoutServerLoad = async () => {
 
     return {
         projects: projects.data || [],
+        menus: menus.data || [],
         options: options || {}
     }
 }

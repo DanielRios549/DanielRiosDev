@@ -7,3 +7,8 @@ export interface Page {
     projects: Project[]
     options: Options
 }
+
+export type Menu = {
+    location: 'header' | 'footer'
+    items: [string, string][]
+}

@@ -2,7 +2,7 @@
     import { browser } from '$app/environment'
     import { onMount } from 'svelte'
     import { wait } from '$/lib'
-    import { menu, theme, projects, options } from '$/stores'
+    import { menu, theme, projects, options, menus } from '$/stores'
     import Menu from '$/components/Menu.svelte'
     import type { Theme } from '$/types'
     import type { LayoutServerData } from './$types'
@@ -14,6 +14,7 @@
     $: {
         $projects = data.projects
         $options = data.options
+        $menus = data.menus
     }
 
     const changeTheme = () => {

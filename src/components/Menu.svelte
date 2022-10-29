@@ -1,11 +1,8 @@
 <script lang="ts">
     import { menu } from '$/stores/config'
+    import { getMenu } from '$/stores/menus'
 
-    const links = [
-        ['/', 'Home'],
-        ['/projects', 'Projects'],
-        ['/contact', 'Contact']
-    ]
+    const links = getMenu('header')
 </script>
 
 <nav class:open={$menu}>
@@ -38,7 +35,7 @@
                             width: 100%;
                         }
                         &::after {
-                            content: '';
+                            content: "";
                             background-color: var(--text);
                             position: absolute;
                             bottom: 0;
@@ -67,7 +64,7 @@
                 gap: 2px;
                 width: min(300px, 70vw);
 
-                li{
+                li {
                     padding-left: 20px;
 
                     &:not(:last-child) {
