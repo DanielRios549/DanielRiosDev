@@ -25,4 +25,7 @@ body {
             / 100vw
         ;
     }
+    > main {
+        grid-area: main;
+    }
 }

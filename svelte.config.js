@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-netlify'
+import PostSCSS from 'postcss-scss'
 import AutoPrefixer from 'autoprefixer'
 import Import from 'postcss-import'
 import Nested from 'postcss-nested'
@@ -22,6 +23,7 @@ const config = {
         },
         postcss: {
             prependData: `@import "${prepend}";`,
+            parser: PostSCSS.parse,
             plugins: [
                 AutoPrefixer(), Nested(),
                 SimpleVars(), Extend(),
