@@ -41,5 +41,5 @@
 {/if}
 
 <style lang="scss" global>
-    @import "../styles/app";
+    @use "../styles/app";
 </style>
