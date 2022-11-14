@@ -7,7 +7,6 @@ body {
     $vh: var(--vh, 100vh);
     background-color: var(--color1);
     height: $vh;
-    // width: 100vw;
     display: grid;
     place-content: center;
     font-size: 1em;
@@ -23,7 +22,7 @@ body {
         grid-template:
             "header" $header
             "main" calc($vh - $header)
-            / auto
+            / 1fr
         ;
     }
     > main {

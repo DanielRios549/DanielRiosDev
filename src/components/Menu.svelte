@@ -13,7 +13,7 @@
     </ul>
 </nav>
 
-<style lang="postcss">
+<style lang="scss">
     @media (--desktop) {
         nav {
             grid-area: menu;
@@ -51,13 +51,17 @@
     }
     @media (--touch) {
         nav {
+            background-color: var(--color1);
             position: absolute;
             top: 60px;
             width: 100vw;
+            height: 100vh;
             justify-content: center;
+            z-index: 9;
 
             &:not(.open) {
                 top: -100%;
+                height: 0;
             }
             ul {
                 flex-direction: column;
@@ -75,10 +79,9 @@
         }
     }
     nav {
-        background-color: var(--color1);
         transition: top 200ms ease;
         display: flex;
-        z-index: 10;
+        z-index: 11;
 
         ul {
             display: flex;
@@ -90,6 +93,7 @@
                 a {
                     display: flex;
                     align-items: center;
+                    color: var(--text) !important;
                 }
             }
         }

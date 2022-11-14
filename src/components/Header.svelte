@@ -16,7 +16,7 @@
     }
 </script>
 
-<header>
+<header class:menu={$menu}>
     <h1>Page Header</h1>
     <button on:click={changeTheme}>Change</button>
     <button on:click={() => ($menu = !$menu)}  class:open={$menu}>
@@ -26,15 +26,23 @@
     </button>
 </header>
 
-<style lang="postcss">
+<style lang="scss">
     header {
         grid-area: header;
         display: flex;
         justify-content: space-between;
         z-index: 11;
 
+        &.menu {
+            background-color: var(--color1);
+
+            button > span {
+                background-color: var(--text);
+            }
+        }
         button {
             @extend %center;
+            background-color: transparent;
 
             @media (--desktop) {
                 display: none !important;
@@ -64,7 +72,7 @@
                 span {
                     position: relative;
                     border-radius: 10px;
-                    background-color: var(--text);
+                    background-color: var(--white);
                     display: block;
                     height: 3px;
                     transition: transform 200ms ease;
@@ -79,7 +87,7 @@
                         width: 40%;
                     }
                 }
-        }
+            }
         }
     }
 </style>
