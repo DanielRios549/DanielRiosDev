@@ -2,7 +2,7 @@
     import { browser } from '$app/environment'
     import { onMount } from 'svelte'
     import { wait } from '$/lib'
-    import { theme, projects, options, menus } from '$/stores'
+    import { theme, projects, options, menus, texts } from '$/stores'
     import Header from '$/components/Header.svelte'
     import Menu from '$/components/Menu.svelte'
     import type { LayoutServerData } from './$types'
@@ -12,6 +12,7 @@
     $: {
         $projects = data.projects
         $options = data.options
+        $texts = data.texts
         $menus = data.menus
     }
 

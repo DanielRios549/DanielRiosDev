@@ -2,6 +2,8 @@ import { createClient } from '@supabase/supabase-js'
 import type { Pages, Options, Option } from '$/types'
 import type { LayoutServerLoad } from './$types'
 
+export const prerender = true
+
 export const project = process.env.PROJECT || ''
 export const supabase = createClient(
     process.env.API_URL || '',
@@ -12,8 +14,8 @@ export const load: LayoutServerLoad = async () => {
     const projects = await supabase.from('Projects')
         .select('name, stack, repo, link')
 
-    const menus = await supabase.from('Menus').select('location, items')
-
+    const menus = await supabase.from(`${project}_Menus`).select('location, items')
+    const texts = await supabase.from(`${project}_Texts`).select('type, content')
     const optionsList = await supabase.from<Record<string, string>>(`${project}_Options`)
         .select('option, value')
 
@@ -34,6 +36,7 @@ export const load: LayoutServerLoad = async () => {
     return {
         projects: projects.data || [],
         menus: menus.data || [],
+        texts: texts.data || [],
         options: options || {}
     }
 }
