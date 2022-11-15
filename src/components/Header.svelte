@@ -17,7 +17,7 @@
 </script>
 
 <header class:menu={$menu}>
-    <h1>Page Header</h1>
+    <h1>Daniel Rios</h1>
     <button on:click={changeTheme}>Change</button>
     <button on:click={() => ($menu = !$menu)}  class:open={$menu}>
         <span></span>
@@ -32,6 +32,8 @@
         display: flex;
         justify-content: space-between;
         z-index: 11;
+        display: flex;
+        align-items: center;
 
         &.menu {
             background-color: var(--color1);
@@ -40,9 +42,13 @@
                 background-color: var(--text);
             }
         }
+        h1 {
+            padding-left: 15px;
+        }
         button {
             @extend %center;
             background-color: transparent;
+            align-self: stretch;
 
             @media (--desktop) {
                 display: none !important;
