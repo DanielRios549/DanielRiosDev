@@ -1,14 +1,19 @@
 <script lang="ts">
+    import { page } from '$app/stores'
     import { menu } from '$/stores/config'
     import { getMenu } from '$/stores/menus'
 
     const links = getMenu('header')
+
+    $: current = $page.url.pathname
 </script>
 
 <nav class:open={$menu}>
     <ul>
         {#each links as [link, name]}
-            <li><a on:click={() => ($menu = !$menu)} href={link}>{name}</a></li>
+            <li class:active={current === link}>
+                <a on:click={() => ($menu = false)} href={link}>{name}</a>
+            </li>
         {/each}
     </ul>
 </nav>
@@ -27,13 +32,14 @@
                 li {
                     position: relative;
 
+                    a:hover::after,
+                    &.active a::after {
+                        width: 100%;
+                    }
                     a {
                         width: 100px;
                         justify-content: center;
 
-                        &:hover::after {
-                            width: 100%;
-                        }
                         &::after {
                             content: "";
                             background-color: var(--text);
