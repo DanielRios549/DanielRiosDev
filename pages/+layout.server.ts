@@ -15,7 +15,7 @@ export const load: LayoutServerLoad = async () => {
         .select('name, stack, repo, link')
 
     const menus = await supabase.from(`${project}_Menus`).select('location, items')
-    const texts = await supabase.from(`${project}_Texts`).select('type, content')
+    const texts = await supabase.from(`${project}_Texts`).select('type, content, html')
     const optionsList = await supabase.from<Record<string, string>>(`${project}_Options`)
         .select('option, value')
 

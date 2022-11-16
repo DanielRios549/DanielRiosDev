@@ -1,6 +1,6 @@
 <script lang="ts">
     import About from '$/components/About.svelte'
-    import { options } from '$/stores'
+    import { options, getText } from '$/stores'
 
     const { title, description } = $options.home
 </script>
@@ -12,7 +12,7 @@
 
 <figure>
     <figcaption>
-        <h1>Hello,<br> my name is <span>Daniel</span></h1>
+        {@html getText('resume')}
     </figcaption>
     <img src="banner.jpg" alt="Banner"/>
 </figure>
@@ -37,23 +37,25 @@
             @media (--mobileSmall) {
                 grid-column: 1/3;
 
-                h1 {
+                :global(h1) {
                     align-items: center !important;
                     text-align: center;
                 }
             }
-            h1 {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                font-size: clamp(2rem, 6vw, 4rem);
-                color: var(--white);
-                z-index: 10;
-                height: 100%;
+            :global {
+                h1 {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    font-size: clamp(2rem, 6vw, 4rem);
+                    color: var(--white);
+                    z-index: 10;
+                    height: 100%;
 
-                span {
-                    color: var(--highlight);
+                    span {
+                        color: var(--highlight);
+                    }
                 }
             }
         }

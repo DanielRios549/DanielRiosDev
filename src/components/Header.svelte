@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { menu, theme } from '$/stores'
+    import { menu, theme, getText } from '$/stores'
     import type { Theme } from '$/types'
 
     const themes: Theme[] = ['light', 'dark']
@@ -17,7 +17,7 @@
 </script>
 
 <header class:menu={$menu}>
-    <h1>Daniel Rios</h1>
+    <h1>{getText('header')}</h1>
     <button on:click={changeTheme}>Change</button>
     <button on:click={() => ($menu = !$menu)}  class:open={$menu}>
         <span></span>
