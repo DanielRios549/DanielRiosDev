@@ -20,11 +20,13 @@
 
 <style lang="scss">
     section {
+        @extend %centerLayout;
         display: grid;
+        gap: 10px;
         grid-template:
             "image header" 30px
             "image text" 1fr
-            "image footer" 30px
+            "image footer" 40px
             / min-content 1fr
         ;
 
@@ -35,7 +37,7 @@
                 "header" 30px
                 "image" 50px
                 "text" 1fr
-                "footer" 30px
+                "footer" 40px
                 / 1fr
             ;
         }
@@ -44,6 +46,7 @@
         }
         figure {
             grid-area: image;
+            width: 200px;
         }
         p {
             grid-area: text;
@@ -51,6 +54,14 @@
         }
         button {
             grid-area: footer;
+            background-color: var(--highlight);
+            width: 200px;
+            align-self: stretch;
+
+            span{
+                color: var(--black);
+                font-size: 1.2rem;
+            }
         }
     }
 </style>

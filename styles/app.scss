@@ -27,5 +27,8 @@ body {
     }
     > main {
         grid-area: header/main;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 }

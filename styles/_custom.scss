@@ -12,3 +12,8 @@
     background-color: rgba(#000000, .4);
     filter: blur(8px);
 }
+
+%centerLayout {
+    width: min(90vw, 700px);
+    margin: 0 auto;
+}
