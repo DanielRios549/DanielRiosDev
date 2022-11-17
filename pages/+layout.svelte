@@ -1,5 +1,6 @@
 <script lang="ts">
     import { browser } from '$app/environment'
+    import { page } from '$app/stores'
     import { onMount } from 'svelte'
     import { wait } from '$/lib'
     import { theme, projects, options, menus, texts } from '$/stores'
@@ -16,6 +17,7 @@
         $menus = data.menus
     }
 
+    $: mixed = $page.url.pathname === '/'
     $: ready = !import.meta.env.DEV
     $: vh = 0
 
@@ -36,11 +38,20 @@
 {#if ready}
     <Header/>
     <Menu/>
-    <main>
+    <main class:mixed>
         <slot/>
     </main>
 {/if}
 
 <style lang="scss" global>
     @use "../styles/app";
+
+    main {
+        :not(.mixed) {
+            grid-area: main;
+        }
+        &.mixed {
+            grid-area: header/main;
+        }
+    }
 </style>
