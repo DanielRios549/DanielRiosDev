@@ -44,6 +44,7 @@
         }
         h1 {
             padding-left: 15px;
+            font-size: clamp(1.2rem, 6vw, 2rem);
         }
         button {
             @extend %center;

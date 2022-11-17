@@ -64,7 +64,7 @@
             grid-row: 1/3;
             position: relative;
             height: 100%;
-            width: clamp(360px, 100vw, 1440px);
+            width: clamp(100px, 100vw, 1440px);
             object-fit: cover;
             justify-self: center;
             z-index: 9;
