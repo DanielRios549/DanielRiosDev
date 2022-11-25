@@ -1,5 +1,6 @@
 <script lang="ts">
     import About from '$/components/About.svelte'
+    import Projects from '$/components/Projects.svelte'
     import { options, getText } from '$/stores'
 
     const { title, description } = $options.home
@@ -17,6 +18,7 @@
     <img src="banner.jpg" alt="Banner"/>
 </figure>
 <About/>
+<Projects header/>
 
 <style lang="scss">
     figure {
@@ -35,6 +37,7 @@
             z-index: 10;
 
             @media (--mobileSmall) {
+                padding: 0;
                 grid-column: 1/3;
 
                 :global(h1) {
@@ -48,7 +51,7 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
-                    font-size: clamp(2rem, 6vw, 4rem);
+                    font-size: clamp(3rem, 6vw, 4rem);
                     color: var(--white);
                     z-index: 10;
                     height: 100%;

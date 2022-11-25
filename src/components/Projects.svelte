@@ -1,18 +1,32 @@
 <script lang="ts">
     import { projects } from '$/stores'
+    import Github from '$/icons/github.svg'
+    import Link from '$/icons/link.svg'
+
+    export let header: boolean = false
 </script>
 
 <section>
-    <header>
-        <h2>Projects</h2>
-    </header>
+    {#if header}
+        <header>
+            <h2>Projects</h2>
+        </header>
+    {/if}
     {#each $projects as {name, stack, repo, link}}
         <article>
             <header>
                 <h3>{name}</h3>
             </header>
             <span class="stack">{stack}</span>
-            <span class="repo"><a href={repo} target="_blank" rel="noreferrer">Repo</a></span>
+            <span class="repo">
+                <Github/>
+                <a href={repo} target="_blank" rel="noreferrer">Repo</a>
+            </span>
+            <span class="link">
+                <Link/>
+                <a href={link} target="_blank" rel="noreferrer">Link</a>
+            </span>
+
         </article>
     {/each}
 </section>
@@ -41,6 +55,16 @@
                 "stack repo" min-content
                 / 1fr 50px
             ;
+            // @media (--mobileSmall) {
+            //     grid-template:
+            //         "image link" 50px
+            //         "image ." 1fr
+            //         "header ." 50px
+            //         "stack ." min-content
+            //         "repo ." 50px
+            //         / 1fr 50px
+            //     ;
+            // }
             header {
                 grid-area: header;
             }
@@ -49,6 +73,9 @@
             }
             .repo {
                 grid-area: repo;
+            }
+            .link {
+                grid-area: link;
             }
         }
     }
