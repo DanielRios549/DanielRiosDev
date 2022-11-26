@@ -12,7 +12,7 @@ export const supabase = createClient(
 
 export const load: LayoutServerLoad = async () => {
     const projects = await supabase.from('Projects')
-        .select('name, stack, repo, link')
+        .select('name, stack, repo, link, image')
 
     const menus = await supabase.from(`${project}_Menus`).select('location, items')
     const texts = await supabase.from(`${project}_Texts`).select('type, content, html')
