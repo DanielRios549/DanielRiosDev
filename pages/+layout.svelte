@@ -47,7 +47,7 @@
     @use "../styles/app";
 
     main {
-        :not(.mixed) {
+        &:not(.mixed) {
             grid-area: main;
         }
         &.mixed {
