@@ -3,4 +3,5 @@ export interface Project {
     stack: string
     repo?: string
     link?: string
+    image?: string
 }
