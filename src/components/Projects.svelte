@@ -2,16 +2,9 @@
     import { projects } from '$/stores'
     import Github from '$/icons/github.svg'
     import Link from '$/icons/link.svg'
-
-    export let header: boolean = false
 </script>
 
 <section>
-    {#if header}
-        <header>
-            <h2>Projects</h2>
-        </header>
-    {/if}
     {#each $projects as {name, stack, repo, link, image}}
         <article>
             <header>
@@ -45,29 +38,22 @@
 
 <style lang="scss">
     section {
-        @extend %centerLayout;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         align-items: center;
         gap: 10px;
 
+        @media (--mobile) {
+            justify-content: center;
+        }
         article {
             border-radius: var(--radius);
             background-color: var(--color2);
-            width: min(400px, 90vw);
+            width: min(330px, 90vw);
             text-align: center;
             display: grid;
             place-items: center;
-
-            &:hover {
-                figcaption {
-                    backdrop-filter: blur(4px) opacity(1);
-                }
-                .link {
-                    display: flex;
-                }
-            }
             grid-template:
                 "image link" 50px
                 "image ." 120px
@@ -75,16 +61,37 @@
                 "stack repo" 30px
                 / 1fr 50px
             ;
-            // @media (--mobileSmall) {
-            //     grid-template:
-            //         "image link" 50px
-            //         "image ." 1fr
-            //         "header ." 50px
-            //         "stack ." min-content
-            //         "repo ." 50px
-            //         / 1fr 50px
-            //     ;
-            // }
+            @media (--mobile) {
+                figcaption {
+                    backdrop-filter: blur(4px) opacity(1);
+                }
+                .link {
+                    opacity: 1;
+                }
+            }
+            @media (--mobileSmall) {
+                grid-template:
+                    "image link" 50px
+                    "image ." 1fr
+                    "header header" 50px
+                    "stack stack" min-content
+                    "repo repo" 50px
+                    / 1fr 50px
+                ;
+                .repo a {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+            }
+            &:hover {
+                figcaption {
+                    backdrop-filter: blur(4px) opacity(1);
+                }
+                .link {
+                    opacity: 1;
+                }
+            }
             header {
                 grid-area: header;
                 z-index: 8;
@@ -97,7 +104,7 @@
                 grid-column: 1/3;
                 z-index: 7;
                 display: flex;
-                align-self: center;
+                justify-content: center;
                 overflow: hidden;
 
                 figcaption {
@@ -110,8 +117,8 @@
                     transition: backdrop-filter 500ms ease;
                 }
                 img {
-                    width: 100%;
-                    height: auto;
+                    width: max(100%, 500px);
+                    height: 100%;
                     object-fit: cover;
                 }
             }
@@ -124,8 +131,9 @@
                 z-index: 8;
             }
             .link {
-                display: none;
+                opacity: 0;
                 grid-area: link;
+                transition: opacity 300ms linear;
                 z-index: 8;
             }
         }

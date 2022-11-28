@@ -18,7 +18,10 @@
     <img src="banner.jpg" alt="Banner"/>
 </figure>
 <About/>
-<Projects header/>
+<section>
+    <header><h2>Projects</h2></header>
+    <Projects/>
+</section>
 
 <style lang="scss">
     figure {
@@ -67,7 +70,7 @@
             grid-row: 1/3;
             position: relative;
             height: 100%;
-            width: clamp(100px, 100vw, 1440px);
+            width: clamp(100px, 100%, 1440px);
             object-fit: cover;
             justify-self: center;
             z-index: 9;
@@ -82,6 +85,20 @@
                 height: 100%;
                 width: 100%;
                 @extend %transparency;
+            }
+        }
+    }
+    section {
+        @extend %centerLayout;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        header {
+            @media (--mobile) {
+                h2 {
+                    text-align: center;
+                }
             }
         }
     }

@@ -52,6 +52,7 @@
         }
         &.mixed {
             grid-area: header/main;
+            grid-row: 1/3;
         }
     }
 </style>
