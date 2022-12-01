@@ -1,6 +1,7 @@
 <script lang="ts">
     import About from '$/components/About.svelte'
     import Projects from '$/components/Projects.svelte'
+    import Title from '$/components/Title.svelte'
     import { options, getText } from '$/stores'
 
     const { title, description } = $options.home
@@ -19,7 +20,7 @@
 </figure>
 <About/>
 <section>
-    <header><h2>Projects</h2></header>
+    <Title>Projects</Title>
     <Projects/>
 </section>
 
@@ -93,13 +94,5 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-
-        header {
-            @media (--mobile) {
-                h2 {
-                    text-align: center;
-                }
-            }
-        }
     }
 </style>

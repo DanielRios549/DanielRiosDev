@@ -1,14 +1,13 @@
 <script lang="ts">
     import { getText, options } from '$/stores'
+    import Title from '$/components/Title.svelte'
 
     const text = getText('about')
     const title = $options.about.title
 </script>
 
 <section>
-    <header>
-        <h2>{title}</h2>
-    </header>
+    <Title>{title}</Title>
     <figure>
         <figcaption>
             <span>Image</span>
@@ -29,7 +28,6 @@
             "image footer" 40px
             / min-content 1fr
         ;
-
         @media (--mobileSmall) {
             place-items: center;
             text-align: center;
@@ -50,9 +48,10 @@
         }
         p {
             grid-area: text;
-            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
         }
         button {
+            border-radius: var(--radius);
             grid-area: footer;
             background-color: var(--highlight);
             width: 200px;
