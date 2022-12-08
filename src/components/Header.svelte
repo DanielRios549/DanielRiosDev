@@ -38,14 +38,15 @@
         top: 0;
         grid-area: header;
         display: flex;
-        justify-content: space-between;
         align-items: center;
         z-index: 11;
         transition: all 200ms ease;
 
+        @media(--mobile) {
+            justify-content: space-between;
+        }
         &.pinned {
-            background-color: rgba(0, 0, 0, .4);
-            backdrop-filter: blur(5px);
+            @extend %transparency;
         }
         &.menu {
             background-color: var(--color1);
@@ -63,7 +64,7 @@
             background-color: transparent;
             align-self: stretch;
 
-            @media (--touch) {
+            @media (--mobile) {
                 width: 60px;
                 flex-direction: column;
                 align-items: flex-end;

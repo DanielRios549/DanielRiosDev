@@ -51,6 +51,7 @@
             border-radius: var(--radius);
             background-color: var(--color2);
             width: min(330px, 90vw);
+            flex: 1 1 250px;
             text-align: center;
             display: grid;
             place-items: center;

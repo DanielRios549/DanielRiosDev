@@ -17,6 +17,10 @@
 
 @custom-media --desktopSmall (1280px < width <= 1400px);
 
+// Apply for both tablets and desktop
+
+@custom-media --large (width >= 750px);
+
 //Apply for tablets
 
 @custom-media --tablet (750px < width <= 1280px);

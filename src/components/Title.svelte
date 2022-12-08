@@ -11,7 +11,7 @@
 </header>
 
 <style lang="scss">
-    @media (--mobile) {
+    @media (--mobileSmall) {
         h2 {
             text-align: center;
         }

@@ -19,11 +19,11 @@
 </nav>
 
 <style lang="scss">
-    @media (--desktop) {
+    @media (--large) {
         nav {
-            grid-area: menu;
-            position: relative;
-            justify-content: flex-end;
+            grid-area: header;
+            position: sticky;
+            top: 0;
 
             ul {
                 flex-direction: row;
@@ -55,7 +55,7 @@
             }
         }
     }
-    @media (--touch) {
+    @media (--mobile) {
         nav {
             background-color: var(--color1);
             position: fixed;
@@ -87,6 +87,7 @@
     nav {
         transition: top 200ms ease;
         display: flex;
+        justify-self: flex-end;
         z-index: 11;
 
         ul {

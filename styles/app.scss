@@ -11,20 +11,11 @@ body {
     place-content: center;
     font-size: 1em;
 
-    @media (--desktop) {
-        grid-template:
-            "header menu" $header
-            "main main" calc($vh - $header)
-            / 1fr 1fr
-        ;
-    }
-    @media (--touch) {
-        grid-template:
-            "header" $header
-            "main" calc($vh - $header)
-            / 1fr
-        ;
-    }
+    grid-template:
+        "header" $header
+        "main" calc($vh - $header)
+        / 1fr
+    ;
     > main {
         display: flex;
         flex-direction: column;
