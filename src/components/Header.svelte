@@ -14,9 +14,13 @@
             $theme = themes[0]
         }
     }
+
+    let scroll = 0
 </script>
 
-<header class:menu={$menu}>
+<svelte:window bind:scrollY={scroll}/>
+
+<header class:menu={$menu} class:pinned={scroll > 50}>
     <h1>{getText('header')}</h1>
     <button on:click={changeTheme}>Change</button>
     <button on:click={() => ($menu = !$menu)}  class:open={$menu}>
@@ -28,13 +32,19 @@
 
 <style lang="scss">
     header {
+        position: sticky;
+        top: 0;
         grid-area: header;
         display: flex;
         justify-content: space-between;
-        z-index: 11;
-        display: flex;
         align-items: center;
+        z-index: 11;
+        transition: all 200ms ease;
 
+        &.pinned {
+            background-color: rgba(0, 0, 0, .4);
+            backdrop-filter: blur(5px);
+        }
         &.menu {
             background-color: var(--color1);
 
@@ -51,9 +61,6 @@
             background-color: transparent;
             align-self: stretch;
 
-            @media (--desktop) {
-                display: none !important;
-            }
             @media (--touch) {
                 width: 60px;
                 flex-direction: column;
