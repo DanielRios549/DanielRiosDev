@@ -58,7 +58,7 @@
     @media (--touch) {
         nav {
             background-color: var(--color1);
-            position: absolute;
+            position: fixed;
             top: 60px;
             width: 100vw;
             height: 100vh;

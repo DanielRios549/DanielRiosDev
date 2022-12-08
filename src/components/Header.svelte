@@ -2,7 +2,10 @@
     import { menu, theme, getText } from '$/stores'
     import type { Theme } from '$/types'
 
+    let scroll = 0
     const themes: Theme[] = ['light', 'dark']
+
+    $: document.body.style.overflowY = $menu ? 'hidden' : 'auto'
 
     const changeTheme = () => {
         const current = themes.findIndex((search) => search === $theme)
@@ -15,7 +18,6 @@
         }
     }
 
-    let scroll = 0
 </script>
 
 <svelte:window bind:scrollY={scroll}/>
