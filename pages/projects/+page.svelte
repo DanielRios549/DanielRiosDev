@@ -1,26 +1,24 @@
 <script lang="ts">
-    import { options, projects } from '$/stores'
+    import { options } from '$/stores'
+    import Projects from '$/components/Projects.svelte'
 
     const { title, description } = $options.projects
-
 </script>
 
 <svelte:head>
     <title>{title}</title>
-    <meta name="description" content={description}/>
+    <meta name="description" content={description} />
 </svelte:head>
 
 <section>
     <header>
         <h3>Projects</h3>
+        <Projects/>
     </header>
-    {#each $projects as {name, stack}}
-        <article>{name} - {stack}</article>
-    {/each}
 </section>
 
-<style lang="postcss">
+<style lang="scss">
     section {
-        border: 1px solid red
+        @extend %centerLayout;
     }
 </style>

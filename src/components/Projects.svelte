@@ -51,38 +51,49 @@
             border-radius: var(--radius);
             background-color: var(--color2);
             width: min(330px, 90vw);
+            max-width: 330px;
             flex: 1 1 250px;
             text-align: center;
             display: grid;
             place-items: center;
             grid-template:
-                "image link" 50px
+                "image link" 80px
                 "image ." 120px
                 "header repo" 50px
                 "stack repo" 30px
-                / 1fr 50px
+                / 1fr 60px
             ;
             @media (--mobile) {
                 figcaption {
-                    backdrop-filter: blur(4px) opacity(1);
+                    backdrop-filter: blur(4px) opacity(1) !important;
                 }
                 .link {
-                    opacity: 1;
+                    opacity: 1 !important;
                 }
             }
             @media (--mobileSmall) {
                 grid-template:
-                    "image link" 50px
-                    "image ." 1fr
-                    "header header" 50px
-                    "stack stack" min-content
-                    "repo repo" 50px
-                    / 1fr 50px
+                    "image link . " 200px
+                    "image link ." 1fr
+                    "header header header" 50px
+                    "stack stack stack" min-content
+                    "repo repo repo" 50px
+                    / 1fr 200px 1fr
                 ;
                 .repo a {
                     display: flex;
                     align-items: center;
                     gap: 10px;
+                }
+                .link {
+                    :global {
+                        svg {
+                            --size: 64px;
+                        }
+                    }
+                    span {
+                        font-size: 3rem;
+                    }
                 }
             }
             &:hover {
@@ -98,11 +109,13 @@
                 z-index: 8;
             }
             figure {
+                border-top-left-radius: var(--radius);
+                border-top-right-radius: var(--radius);
                 position: relative;
                 width: 100%;
                 height: 100%;
                 grid-area: image;
-                grid-column: 1/3;
+                grid-column: 1/4;
                 z-index: 7;
                 display: flex;
                 justify-content: center;
@@ -136,6 +149,21 @@
                 grid-area: link;
                 transition: opacity 300ms linear;
                 z-index: 8;
+
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    :global {
+                        svg path {
+                            fill: var(--white) !important;
+                        }
+                    }
+                    span {
+                        color: var(--white) !important;
+                    }
+                }
             }
         }
     }
