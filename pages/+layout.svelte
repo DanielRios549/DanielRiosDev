@@ -46,6 +46,14 @@
 <style lang="scss" global>
     @use "../styles/app";
 
+    :global {
+        body:has(main:not(.mixed)) {
+            --headerColor: var(--text);
+        }
+        body:has(main.mixed) {
+            --headerColor: var(--white);
+        }
+    }
     main {
         &:not(.mixed) {
             grid-area: main;

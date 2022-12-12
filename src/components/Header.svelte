@@ -44,6 +44,10 @@
 
         @media(--mobile) {
             justify-content: space-between;
+
+            &.menu h1 {
+                color: var(--text);
+            }
         }
         &.pinned {
             @extend %transparency;
@@ -58,6 +62,7 @@
         h1 {
             padding-left: 15px;
             font-size: clamp(1.2rem, 6vw, 2rem);
+            color: var(--headerColor, var(--text));
         }
         button {
             @extend %center;
@@ -89,7 +94,7 @@
                 span {
                     position: relative;
                     border-radius: 10px;
-                    background-color: var(--white);
+                    background-color: var(--headerColor, var(--white));
                     display: block;
                     height: 3px;
                     transition: transform 200ms ease;

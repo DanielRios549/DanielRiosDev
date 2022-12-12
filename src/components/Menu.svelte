@@ -20,6 +20,8 @@
 
 <style lang="scss">
     @media (--large) {
+        $color: var(--headerColor, var(--text));
+
         nav {
             grid-area: header;
             position: sticky;
@@ -39,10 +41,11 @@
                     a {
                         width: 100px;
                         justify-content: center;
+                        color: $color;
 
                         &::after {
                             content: "";
-                            background-color: var(--text);
+                            background-color: $color;
                             position: absolute;
                             bottom: 0;
                             left: 0;
@@ -80,6 +83,9 @@
                     &:not(:last-child) {
                         border-bottom: 2px solid var(--color2);
                     }
+                    a {
+                        color: var(--text);
+                    }
                 }
             }
         }
@@ -100,7 +106,6 @@
                 a {
                     display: flex;
                     align-items: center;
-                    color: var(--text) !important;
                 }
             }
         }
