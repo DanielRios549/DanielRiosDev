@@ -1,30 +1,15 @@
 <script lang="ts">
-    import { menu, theme, getText } from '$/stores'
-    import type { Theme } from '$/types'
+    import { menu, getText } from '$/stores'
 
     let scroll = 0
-    const themes: Theme[] = ['light', 'dark']
 
     $: document.body.style.overflowY = $menu ? 'hidden' : 'auto'
-
-    const changeTheme = () => {
-        const current = themes.findIndex((search) => search === $theme)
-
-        if (current + 1 < themes.length) {
-            $theme = themes[current + 1]
-        }
-        else {
-            $theme = themes[0]
-        }
-    }
-
 </script>
 
 <svelte:window bind:scrollY={scroll}/>
 
 <header class:menu={$menu} class:pinned={scroll > 50}>
     <h1>{getText('header')}</h1>
-    <button on:click={changeTheme}>Change</button>
     <button on:click={() => ($menu = !$menu)}  class:open={$menu}>
         <span></span>
         <span></span>

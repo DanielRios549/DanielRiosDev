@@ -2,30 +2,37 @@
     import { page } from '$app/stores'
     import { menu } from '$/stores/config'
     import { getMenu } from '$/stores/menus'
+    import ThemeSwitcher from '$/components/ThemeSwitcher.svelte'
 
     const links = getMenu('header')
 
     $: current = $page.url.pathname
 </script>
 
-<nav class:open={$menu}>
-    <ul>
-        {#each links as [link, name]}
-            <li class:active={current === link}>
-                <a on:click={() => ($menu = false)} href={link}>{name}</a>
-            </li>
-        {/each}
-    </ul>
-</nav>
+<section class:open={$menu}>
+    <ThemeSwitcher/>
+    <nav>
+        <ul>
+            {#each links as [link, name]}
+                <li class:active={current === link}>
+                    <a on:click={() => ($menu = false)} href={link}>{name}</a>
+                </li>
+            {/each}
+        </ul>
+    </nav>
+</section>
 
 <style lang="scss">
     @media (--large) {
         $color: var(--headerColor, var(--text));
 
-        nav {
+        section {
             grid-area: header;
             position: sticky;
             top: 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
 
             ul {
                 flex-direction: row;
@@ -59,38 +66,44 @@
         }
     }
     @media (--mobile) {
-        nav {
+        section {
             background-color: var(--color1);
             position: fixed;
             top: 60px;
             width: 100vw;
             height: 100vh;
-            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             z-index: 9;
 
             &:not(.open) {
                 top: -100%;
                 height: 0;
             }
-            ul {
-                flex-direction: column;
-                gap: 2px;
-                width: min(300px, 70vw);
+            nav {
+                // display: inline;
+                // order: 1;
 
-                li {
-                    padding-left: 20px;
+                ul {
+                    flex-direction: column;
+                    gap: 2px;
+                    width: min(300px, 70vw);
 
-                    &:not(:last-child) {
-                        border-bottom: 2px solid var(--color2);
-                    }
-                    a {
-                        color: var(--text);
+                    li {
+                        padding-left: 20px;
+
+                        &:not(:last-child) {
+                            border-bottom: 2px solid var(--color2);
+                        }
+                        a {
+                            color: var(--text);
+                        }
                     }
                 }
             }
         }
     }
-    nav {
+    section {
         transition: top 200ms ease;
         display: flex;
         justify-self: flex-end;
