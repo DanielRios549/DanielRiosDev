@@ -1,24 +1,3 @@
 @use "./breakpoints";
 @use "./reset";
 @use "./themes";
-
-body {
-    $header: 60px;
-    $vh: var(--vh, 100vh);
-    background-color: var(--color1);
-    height: $vh;
-    display: grid;
-    place-content: center;
-    font-size: 1em;
-
-    grid-template:
-        "header" $header
-        "main" calc($vh - $header)
-        / 1fr
-    ;
-    > main {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-}

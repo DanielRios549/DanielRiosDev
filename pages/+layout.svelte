@@ -46,21 +46,38 @@
 <style lang="scss" global>
     @use "../styles/app";
 
-    :global {
-        body:has(main:not(.mixed)) {
+    body {
+        $header: 60px;
+        $vh: var(--vh, 100vh);
+        background-color: var(--color1);
+        min-height: $vh;
+        margin-bottom: 20px;
+        display: grid;
+        place-content: center;
+        font-size: 1em;
+        grid-template:
+            "header" $header
+            "main" min-content
+            / 1fr
+        ;
+        &:has(main:not(.mixed)) {
             --headerColor: var(--text);
         }
-        body:has(main.mixed) {
+        &:has(main.mixed) {
             --headerColor: var(--white);
         }
-    }
-    main {
-        &:not(.mixed) {
-            grid-area: main;
-        }
-        &.mixed {
-            grid-area: header/main;
-            grid-row: 1/3;
+        > main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            &:not(.mixed) {
+                grid-area: main;
+            }
+            &.mixed {
+                grid-area: header/main;
+                grid-row: 1/3;
+            }
         }
     }
 </style>
