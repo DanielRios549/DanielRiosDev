@@ -30,19 +30,19 @@
         @media(--mobile) {
             justify-content: space-between;
 
-            &.menu h1 {
-                color: var(--text);
+            &.menu {
+                background-color: var(--color1);
+
+                button > span {
+                    background-color: var(--text);
+                }
+                h1 {
+                    color: var(--text);
+                }
             }
         }
         &.pinned {
             @extend %transparency;
-        }
-        &.menu {
-            background-color: var(--color1);
-
-            button > span {
-                background-color: var(--text);
-            }
         }
         h1 {
             padding-left: 15px;
