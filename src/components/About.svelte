@@ -39,7 +39,7 @@
                 / 1fr
             ;
         }
-        header {
+        :global(header) {
             grid-area: header;
         }
         figure {

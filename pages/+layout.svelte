@@ -57,7 +57,7 @@
         font-size: 1em;
         grid-template:
             "header" $header
-            "main" min-content
+            "main" 1fr
             / 1fr
         ;
         &:has(main:not(.mixed)) {

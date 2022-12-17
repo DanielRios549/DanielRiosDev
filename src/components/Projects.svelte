@@ -92,7 +92,7 @@
                         }
                     }
                     span {
-                        font-size: 3rem;
+                        font-size: 2rem;
                     }
                 }
             }
