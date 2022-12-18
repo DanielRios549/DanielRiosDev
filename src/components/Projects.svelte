@@ -10,12 +10,10 @@
             <header>
                 <h3>{name}</h3>
             </header>
-            {#if image}
-                <figure>
-                    <figcaption></figcaption>
-                    <img src={image} alt="{name} Image">
-                </figure>
-            {/if}
+            <figure>
+                <figcaption></figcaption>
+                <img src={image || 'project.png'} alt="{name} Image">
+            </figure>
             <span class="stack">{stack}</span>
             <span class="repo">
                 <a href={repo} target="_blank" rel="noreferrer">
@@ -48,8 +46,6 @@
             justify-content: center;
         }
         article {
-            border-radius: var(--radius);
-            background-color: var(--color2);
             width: min(330px, 90vw);
             max-width: 330px;
             flex: 1 1 250px;
@@ -59,6 +55,7 @@
             grid-template:
                 "image link" 80px
                 "image ." 120px
+                "spacer spacer" 5px
                 "header repo" 50px
                 "stack repo" 30px
                 / 1fr 60px
@@ -75,6 +72,7 @@
                 grid-template:
                     "image link . " 200px
                     "image link ." 1fr
+                    "spacer spacer spacer" 5px
                     "header header header" 50px
                     "stack stack stack" min-content
                     "repo repo repo" 50px
@@ -103,6 +101,12 @@
                 .link {
                     opacity: 1;
                 }
+            }
+            > * {
+                @extend %center;
+                background-color: var(--color2);
+                height: 100%;
+                width: 100%;
             }
             header {
                 grid-area: header;
@@ -137,23 +141,36 @@
                 }
             }
             .stack {
+                border-bottom-left-radius: var(--radius);
                 grid-area: stack;
                 z-index: 8;
             }
             .repo {
+                border-bottom-right-radius: var(--radius);
                 grid-area: repo;
                 z-index: 8;
+
+                a {
+                    @extend %center;
+                    flex-direction: column;
+                    height: auto !important;
+
+                    @media (--mobileSmall) {
+                        flex-direction: row !important;
+                    }
+
+                }
             }
             .link {
+                background-color: transparent;
                 opacity: 0;
                 grid-area: link;
                 transition: opacity 300ms linear;
                 z-index: 8;
 
                 a {
-                    display: flex;
+                    @extend %center;
                     flex-direction: column;
-                    align-items: center;
 
                     :global {
                         svg path {
