@@ -4,6 +4,8 @@
     import { getMenu } from '$/stores/menus'
     import ThemeSwitcher from '$/components/ThemeSwitcher.svelte'
 
+    import Link from '$/icons/link.svg'
+
     const links = getMenu('header')
 
     $: current = $page.url.pathname
@@ -16,6 +18,9 @@
             {#each links as [link, name]}
                 <li class:active={current === link}>
                     <a on:click={() => ($menu = false)} href={link}>{name}</a>
+                    {#if !link.startsWith('/')}
+                        <Link/>
+                    {/if}
                 </li>
             {/each}
         </ul>
@@ -33,6 +38,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            padding-right: 15px;
 
             ul {
                 flex-direction: row;
@@ -59,6 +65,14 @@
                             height: 3px;
                             width: 0;
                             transition: width 200ms ease;
+                        }
+                    }
+                    :global {
+                        svg {
+
+                            path {
+                                fill: var(--headerColor) !important;
+                            }
                         }
                     }
                 }
