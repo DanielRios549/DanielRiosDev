@@ -4,13 +4,13 @@ import type { LayoutServerLoad } from './$types'
 
 export const prerender = true
 
-export const project = process.env.PROJECT || ''
-export const supabase = createClient(
-    process.env.API_URL || '',
-    process.env.API_KEY || ''
-)
-
 export const load: LayoutServerLoad = async () => {
+    const project = process.env.PROJECT || ''
+    const supabase = createClient(
+        process.env.API_URL || '',
+        process.env.API_KEY || ''
+    )
+
     const projects = await supabase.from('Projects')
         .select('name, stack, repo, link, image')
 
