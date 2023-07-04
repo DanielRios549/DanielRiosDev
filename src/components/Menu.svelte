@@ -29,7 +29,7 @@
 
 <style lang="scss">
     @media (--large) {
-        $color: var(--headerColor, var(--text));
+        $color: var(--header-color, var(--text));
 
         section {
             grid-area: header;
@@ -71,7 +71,7 @@
                         svg {
 
                             path {
-                                fill: var(--headerColor) !important;
+                                fill: var(--header-color) !important;
                             }
                         }
                     }

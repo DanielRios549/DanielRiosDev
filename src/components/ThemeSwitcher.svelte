@@ -28,13 +28,14 @@
     button {
         background-color: transparent;
         $size: 40px;
+
         border-radius: 50%;
         width: $size;
         height: $size;
 
         :global {
             svg path {
-                fill: var(--headerColor, var(--icon)) !important;
+                fill: var(--header-color, var(--icon)) !important;
 
                 @media (--mobile) {
                     fill: var(--icon) !important;

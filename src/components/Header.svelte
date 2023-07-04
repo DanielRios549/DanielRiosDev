@@ -1,9 +1,12 @@
 <script lang="ts">
+    import { browser } from '$app/environment'
     import { menu, getText } from '$/stores'
 
     let scroll = 0
 
-    $: document.body.style.overflowY = $menu ? 'hidden' : 'auto'
+    $: if (browser) {
+        document.body.style.overflowY = $menu ? 'hidden' : 'auto'
+    }
 </script>
 
 <svelte:window bind:scrollY={scroll}/>
@@ -47,10 +50,11 @@
         h1 {
             padding-left: 15px;
             font-size: clamp(1.2rem, 6vw, 2rem);
-            color: var(--headerColor, var(--text));
+            color: var(--header-color, var(--text));
         }
         button {
             @extend %center;
+
             background-color: transparent;
             align-self: stretch;
 
@@ -79,7 +83,7 @@
                 span {
                     position: relative;
                     border-radius: 10px;
-                    background-color: var(--headerColor, var(--white));
+                    background-color: var(--header-color, var(--white));
                     display: block;
                     height: 3px;
                     transition: transform 200ms ease;

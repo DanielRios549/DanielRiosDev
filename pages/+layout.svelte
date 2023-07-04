@@ -18,7 +18,7 @@
     }
 
     $: mixed = $page.url.pathname === '/'
-    $: ready = !import.meta.env.DEV
+    $: ready = import.meta.env.DEV
     $: vh = 0
 
     $: if (browser) {
@@ -46,9 +46,11 @@
 <style lang="scss" global>
     @use "../styles/app";
 
-    body {
+    #app {
+        --header-color: var(--text);
         $header: 60px;
         $vh: var(--vh, 100vh);
+
         background-color: var(--color1);
         min-height: $vh;
         margin-bottom: 20px;
@@ -61,10 +63,10 @@
             / 1fr
         ;
         &:has(main:not(.mixed)) {
-            --headerColor: var(--text);
+            --header-color: var(--text);
         }
         &:has(main.mixed) {
-            --headerColor: var(--white);
+            --header-color: var(--white);
         }
         > main {
             display: flex;
