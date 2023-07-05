@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import preprocess from 'svelte-preprocess'
-import adapter from '@sveltejs/adapter-netlify'
+import adapter from '@sveltejs/adapter-vercel'
 import PostSCSS from 'postcss-scss'
 import AutoPrefixer from 'autoprefixer'
 import Import from 'postcss-import'
@@ -34,7 +34,10 @@ const config = {
     }),
     kit: {
         adapter: adapter({
-            split: true
+            split: true,
+            isr: {
+                expiration: 30
+            }
         }),
         files: {
             routes: 'pages',
