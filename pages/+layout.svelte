@@ -1,8 +1,8 @@
 <script lang="ts">
     import { browser } from '$app/environment'
     import { page } from '$app/stores'
-    import { onMount } from 'svelte'
-    import { wait } from '$/lib'
+    // import { onMount } from 'svelte'
+    // import { wait } from '$/lib'
     import { theme, projects, options, menus, texts } from '$/stores'
     import Header from '$/components/Header.svelte'
     import Menu from '$/components/Menu.svelte'
@@ -18,30 +18,30 @@
     }
 
     $: mixed = $page.url.pathname === '/'
-    $: ready = import.meta.env.DEV
+    // $: ready = import.meta.env.DEV
     $: vh = 0
 
     $: if (browser) {
         document.body.style.setProperty('--vh', `${vh}px`)
         document.body.id = $theme
     }
+    // TODO: Fix ready = true not working inside onMount
+    // onMount(async () => {
+    //     await wait(100)
 
-    onMount(async () => {
-        await wait(100)
-
-        ready = true
-    })
+    //     ready = true
+    // })
 </script>
 
 <svelte:window bind:innerHeight={vh}/>
 
-{#if ready}
+<template>
     <Header/>
     <Menu/>
     <main class:mixed>
         <slot/>
     </main>
-{/if}
+</template>
 
 <style lang="scss" global>
     @use "../styles/app";
