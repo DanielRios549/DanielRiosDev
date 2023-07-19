@@ -1,27 +1,27 @@
 body#light {
-    --color1: #eeeeee;
-    --color2: #dadada;
-    --color3: #e4e4e4;
-    --text: #313131;
-    --text2: #8D8592;
-    --icon: #313131;
-    --white: #eeeeee;
-    --black: #313131;
-    --highlight: #17e9cd;
-    --error: #fb3c3c;
+    --color1: hsl(0deg 0% 93%);
+    --color2: hsl(0deg 0% 85%);
+    --color3: hsl(0deg 0% 89%);
+    --text: hsl(0deg 0% 19%);
+    --text2: hsl(277deg 6% 55%);
+    --icon: hsl(0deg 0% 19%);
+    --white: hsl(0deg 0% 93%);
+    --black: hsl(0deg 0% 19%);
+    --highlight: hsl(172deg 83% 50%);
+    --error: hsl(0deg 96% 61%);
     --radius: 5px;
 }
 body,
 body#dark {
-    --color1: #202225;
-    --color2: #36393F;
-    --color3: #2e3033;
-    --text: #D6D6D6;
-    --text2: #8D8592;
-    --icon: #D6D6D6;
-    --white: #eeeeee;
-    --black: #313131;
-    --highlight: #17e9cd;
-    --error: #fb3c3c;
+    --color1: hsl(216deg 7% 14%);
+    --color2: hsl(220deg 8% 23%);
+    --color3: hsl(216deg 5% 19%);
+    --text: hsl(0deg 0% 84%);
+    --text2: hsl(277deg 6% 55%);
+    --icon: hsl(0deg 0% 84%);
+    --white: hsl(0deg 0% 93%);
+    --black: hsl(0deg 0% 19%);
+    --highlight: hsl(172deg 83% 50%);
+    --error: hsl(0deg 96% 61%);
     --radius: 5px;
 }
