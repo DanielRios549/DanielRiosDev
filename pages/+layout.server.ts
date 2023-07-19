@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js'
 import type { Pages, Options, Option } from '$/types'
 import type { LayoutServerLoad } from './$types'
 
-export const prerender = true
+// export const prerender = true
 
 export const load: LayoutServerLoad = async () => {
     const project = process.env.PROJECT || ''
@@ -11,14 +11,14 @@ export const load: LayoutServerLoad = async () => {
         process.env.API_KEY || ''
     )
 
-    const projects = await supabase.from('Projects')
-        .select('name, stack, repo, link, image')
+    const [projects, menus, texts, optionsList] = await Promise.all([
+        supabase.from('Projects').select('name, stack, repo, link, image'),
+        supabase.from(`${project}_Menus`).select('location, items'),
+        supabase.from(`${project}_Texts`).select('type, content, html'),
+        supabase.from(`${project}_Options`).select('option, value')
+    ])
 
-    const menus = await supabase.from(`${project}_Menus`).select('location, items')
-    const texts = await supabase.from(`${project}_Texts`).select('type, content, html')
-    const optionsList = await supabase.from<Record<string, string>>(`${project}_Options`)
-        .select('option, value')
-
+    const { publicURL } = supabase.storage.from('images').getPublicUrl('projects')
     const options = {} as Options
 
     optionsList.data?.forEach(({ option, value }) => {
@@ -33,7 +33,10 @@ export const load: LayoutServerLoad = async () => {
         options[page][config] = value
     })
 
+    console.log(options)
+
     return {
+        images: publicURL ? publicURL.replace('/projects', '') : '',
         projects: projects.data || [],
         menus: menus.data || [],
         texts: texts.data || [],

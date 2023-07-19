@@ -3,7 +3,7 @@
     import { page } from '$app/stores'
     // import { onMount } from 'svelte'
     // import { wait } from '$/lib'
-    import { theme, projects, options, menus, texts } from '$/stores'
+    import { theme, projects, options, menus, texts, images } from '$/stores'
     import Header from '$/components/Header.svelte'
     import Menu from '$/components/Menu.svelte'
     import type { LayoutServerData } from './$types'
@@ -11,6 +11,7 @@
     export let data: LayoutServerData
 
     $: {
+        $images = data.images
         $projects = data.projects
         $options = data.options
         $texts = data.texts
@@ -53,7 +54,6 @@
 
         background-color: var(--color1);
         min-height: $vh;
-        margin-bottom: 20px;
         display: grid;
         place-content: center;
         font-size: 1em;
@@ -72,6 +72,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            margin-bottom: 20px;
 
             &:not(.mixed) {
                 grid-area: main;

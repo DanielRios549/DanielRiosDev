@@ -2,9 +2,9 @@
     import About from '$/components/About.svelte'
     import Projects from '$/components/Projects.svelte'
     import Title from '$/components/Title.svelte'
-    import { options, getText } from '$/stores'
+    import { images, options, getText } from '$/stores'
 
-    const { title, description } = $options.home
+    const { title, description, banner } = $options.home
 </script>
 
 <svelte:head>
@@ -12,24 +12,28 @@
     <meta name="description" content={description}/>
 </svelte:head>
 
-<figure>
-    <figcaption>
-        {@html getText('resume')}
-    </figcaption>
-    <img src="banner.jpg" alt="Banner"/>
-</figure>
-<About/>
-<section>
-    <Title>Projects</Title>
-    <Projects/>
-</section>
+<template>
+    <figure>
+        <figcaption>
+            {@html getText('resume')}
+        </figcaption>
+        <img src={`${$images}/info/${banner}`} alt="Banner"/>
+    </figure>
+    <About/>
+    <section>
+        <Title>Projects</Title>
+        <Projects/>
+    </section>
+</template>
 
 <style lang="scss">
     figure {
-        $from: #28039E;
-        $to: #07034D;
+        $from: hsl(254deg 96% 32%);
+        $to: hsl(243deg 93% 16%);
+
         background: $from;
         background: linear-gradient(45deg, $from 0%, $to 100%);
+        position: relative;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 240px);
@@ -91,6 +95,7 @@
     }
     section {
         @extend %centerLayout;
+
         display: flex;
         flex-direction: column;
         gap: 10px;

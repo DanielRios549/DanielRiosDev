@@ -1,18 +1,19 @@
 <script lang="ts">
-    import { projects } from '$/stores'
+    import { projects, images } from '$/stores'
     import Github from '$/icons/github.svg'
     import Link from '$/icons/link.svg'
 </script>
 
 <section>
     {#each $projects as {name, stack, repo, link, image}}
+        {@const imageLink = image ? `${$images}/projects/${image}` : `${$images}/projects/no-image.png`}
         <article>
             <header>
                 <h3>{name}</h3>
             </header>
             <figure>
                 <figcaption></figcaption>
-                <img src={image || 'project.png'} alt="{name} Image">
+                <img src={imageLink} alt="{name} Image">
             </figure>
             <span class="stack">{stack}</span>
             <span class="repo">
@@ -25,7 +26,7 @@
                 <span class="link">
                     <a href={link} target="_blank" rel="noreferrer">
                         <Link/>
-                        <span>Link</span>
+                        <span>Open</span>
                     </a>
                 </span>
             {/if}
@@ -104,6 +105,7 @@
             }
             > * {
                 @extend %center;
+
                 background-color: var(--color2);
                 height: 100%;
                 width: 100%;
@@ -126,8 +128,8 @@
                 overflow: hidden;
 
                 figcaption {
-                    background-color: rgba(0, 0, 0, 0.5);
-                    box-shadow: inset 0px -10px 100px #000000;
+                    background-color: rgb(0 0 0 / 50%);
+                    box-shadow: inset 0 -10px 100px hsl(0deg 0% 0%);
                     backdrop-filter: blur(4px) opacity(0);
                     position: absolute;
                     height: 100%;
@@ -152,6 +154,7 @@
 
                 a {
                     @extend %center;
+
                     flex-direction: column;
                     height: auto !important;
 
@@ -170,6 +173,7 @@
 
                 a {
                     @extend %center;
+
                     flex-direction: column;
 
                     :global {
