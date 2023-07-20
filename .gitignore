@@ -33,3 +33,6 @@ yarn-error.log*
 
 # Hosts
 .vercel
+
+# Generated Types
+src/types/generated.d.ts

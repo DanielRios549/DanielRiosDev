@@ -4,6 +4,10 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "start": "supabase start",
+        "stop": "supabase stop",
+        "types": "supabase gen types typescript --local > src/types/generated.d.ts",
+        "migration": "supabase db diff --use-migra -f",
         "dev": "vite dev",
         "build": "vite build",
         "preview": "vite preview",
@@ -12,7 +16,7 @@
         "lint": "eslint ."
     },
     "dependencies": {
-        "@supabase/supabase-js": "^1.35.6"
+        "@supabase/supabase-js": "^2.26.0"
     },
     "devDependencies": {
         "@poppanator/sveltekit-svg": "^1.0.0",
@@ -44,6 +48,7 @@
         "stylelint-config-standard": "^30.0.1",
         "stylelint-config-svelte-roboleary": "^0.4.0",
         "stylelint-scss": "^4.5.0",
+        "supabase": "^1.77.9",
         "svelte": "^3.56.0",
         "svelte-check": "^2.7.1",
         "svelte-preprocess": "^5.0.2",
