@@ -32,6 +32,8 @@
         }
     },
     "include": [
+		".svelte-kit/ambient.d.ts",
+		".svelte-kit/types/**/$types.d.ts",
         "pages/**/*.svelte",
         "pages/**/*.ts",
         "pages/**/*.server.ts",
@@ -41,7 +43,6 @@
         "**/*.test.ts"
     ],
     "exclude": [
-        ".svelte-kit",
         "node_modules",
         "build"
     ]
