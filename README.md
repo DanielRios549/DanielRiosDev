@@ -4,7 +4,7 @@ This is the repository for my personal portfolio website.
 
 ## It uses the following technologies:
 
-NextJS, Sass, Typescript, and ESLint
+[Svelte](https://svelte.dev/), [SvelteKit](https://kit.svelte.dev/), [Typescript](https://www.typescriptlang.org/), [SASS](https://sass-lang.com/), [PostCSS](https://postcss.org/), [ESLint](https://eslint.org/), [Stylelint](https://stylelint.io/) and [Supabase](https://supabase.com/)
 
 ### To install the dependencies use yarn.
 
