@@ -1,25 +1,18 @@
-import { createClient } from '@supabase/supabase-js'
-import { PUBLIC_API_URL } from '$env/static/public'
-import { API_KEY, PROJECT } from '$env/static/private'
+import { PROJECT } from '$env/static/private'
 import type { Pages, Options, Option } from '$/types'
 import type { LayoutServerLoad } from './$types'
 
 // export const prerender = true
 
-export const load: LayoutServerLoad = async () => {
-    const supabase = createClient(
-        PUBLIC_API_URL,
-        API_KEY
-    )
-
+export const load: LayoutServerLoad = async ({ locals }) => {
     const [projects, menus, texts, optionsList] = await Promise.all([
-        supabase.from('Projects').select('name, stack, repo, link, image'),
-        supabase.from(`${PROJECT}_Menus`).select('location, items'),
-        supabase.from(`${PROJECT}_Texts`).select('type, content, html'),
-        supabase.from(`${PROJECT}_Options`).select('option, value')
+        locals.supabase.from('projects').select('name, stack, repo, link, image'),
+        locals.supabase.from(`${PROJECT}_menus`).select('location, items'),
+        locals.supabase.from(`${PROJECT}_texts`).select('type, content, html'),
+        locals.supabase.from(`${PROJECT}_options`).select('option, value')
     ])
 
-    const { publicUrl } = supabase.storage.from('images').getPublicUrl('projects').data
+    const { publicUrl } = locals.supabase.storage.from('images').getPublicUrl('projects').data
     const options = {} as Options
 
     optionsList.data?.forEach(({ option, value }) => {
