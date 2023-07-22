@@ -1,14 +1,31 @@
 <script lang="ts">
+    import { invalidate } from '$app/navigation'
     import { browser } from '$app/environment'
     import { page } from '$app/stores'
-    // import { onMount } from 'svelte'
+    import { onMount } from 'svelte'
     // import { wait } from '$/lib'
     import { theme, projects, options, menus, texts, images } from '$/stores'
     import Header from '$/components/Header.svelte'
     import Menu from '$/components/Menu.svelte'
-    import type { LayoutServerData } from './$types'
 
-    export let data: LayoutServerData
+    export let data
+
+    $: ({ auth, session } = data)
+
+    onMount(() => {
+        // TODO: Fix ready = true not working inside onMount
+        // await wait(100)
+
+        // ready = true
+
+        const { data } = auth.onAuthStateChange((_event, _session) => {
+            if (_session?.expires_at !== session?.expires_at) {
+                invalidate('supabase:auth')
+            }
+        })
+
+        return () => data.subscription.unsubscribe()
+    })
 
     $: {
         $images = data.images
@@ -26,12 +43,6 @@
         document.body.style.setProperty('--vh', `${vh}px`)
         document.body.id = $theme
     }
-    // TODO: Fix ready = true not working inside onMount
-    // onMount(async () => {
-    //     await wait(100)
-
-    //     ready = true
-    // })
 </script>
 
 <svelte:window bind:innerHeight={vh}/>
@@ -62,12 +73,14 @@
             "main" 1fr
             / 1fr
         ;
-        &:has(main:not(.mixed)) {
-            --header-color: var(--text);
-        }
-        &:has(main.mixed) {
-            --header-color: var(--white);
-        }
+        // @supports (body:has()) {
+            &:has(main:not(.mixed)) {
+                --header-color: var(--text);
+            }
+            &:has(main.mixed) {
+                --header-color: var(--white);
+            }
+        // }
         > main {
             display: flex;
             flex-direction: column;

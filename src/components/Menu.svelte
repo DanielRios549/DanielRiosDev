@@ -25,6 +25,9 @@
             {/each}
         </ul>
     </nav>
+    {#if $page.data.session}
+        <span>{$page.data.info?.name || $page.data.session.user.email}</span>
+    {/if}
 </section>
 
 <style lang="scss">
