@@ -52,9 +52,10 @@
         "supabase": "^1.77.9",
         "svelte": "^3.56.0",
         "svelte-check": "^2.7.1",
+        "svelte-forms-lib": "^2.0.1",
         "svelte-preprocess": "^5.0.2",
         "typescript": "^4.8.2",
         "vite": "^4.1.4",
-        "vite-plugin-pwa": "^0.13.3"
+        "yup": "^1.2.0"
     }
 }

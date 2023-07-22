@@ -1,46 +1,35 @@
 <script lang="ts">
+    import * as yup from 'yup'
     import { page } from '$app/stores'
-    import { enhance } from '$app/forms'
+    import Form from '$/components/Form.svelte'
+    import Input from '$/components/forms/Input.svelte'
+
+    const initialValues = {
+        email: '',
+        password: ''
+    }
+    const validationSchema = {
+        email: yup.string().email('Type a valid Email, please').required('Email is Required'),
+        password: yup.string().required('Password is Required').min(5, 'Password too shot')
+    }
 </script>
 
 <template>
     {#if $page.data.session}
-        <form action="?/logout" method="POST" use:enhance>
+        <Form action="?/logout" submitText="Logout">
             <legend>You are already logged in</legend>
-            <button type="submit">Logout</button>
-        </form>
+        </Form>
     {:else}
-        <form action="?/login" method="POST" use:enhance>
-            <input type="text" name="email" id="email" value="test@test.com">
-            <input type="password" name="password" id="password" value="12345">
-
-            <button type="submit">Login</button>
-        </form>
+        <Form action="?/login" {initialValues} {validationSchema} submitText="Login">
+            <Input type="text" name="email" label="Email"/>
+            <Input type="text" name="password" label="Password"/>
+        </Form>
     {/if}
 </template>
 
 <style lang="scss">
-    form {
-        @extend %center;
-
-        flex-direction: column;
-        gap: 20px;
-        margin: auto;
-        width: min(100vw, 350px);
-
-        legend {
-            font-size: 1.8rem;
-            color: var(--text);
-        }
-        input {
-            background-color: var(--color2);
-            width: 100%;
-        }
-        button[type="submit"] {
-            background-color: var(--color3);
-            color: var(--text);
-            width: 100%;
-            height: 50px;
-        }
+    legend {
+        font-size: 1.8rem;
+        color: var(--text);
     }
 </style>

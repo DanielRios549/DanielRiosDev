@@ -29,7 +29,7 @@ export const actions = {
 
         if (e) {
             return fail(500, {
-                error: 'Invalid Email or Password'
+                error: 'Server Error. Cannot Log User Out'
             })
         }
 
