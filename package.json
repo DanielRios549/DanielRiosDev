@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "start": "supabase start",
-        "stop": "supabase stop",
+        "stop": "supabase stop --backup",
         "types": "supabase gen types typescript --local > src/types/generated.d.ts",
         "migration": "supabase db diff --use-migra -f",
         "dev": "vite dev",
@@ -20,8 +20,9 @@
     },
     "devDependencies": {
         "@poppanator/sveltekit-svg": "^1.0.0",
+        "@supabase/auth-helpers-sveltekit": "^0.10.1",
         "@sveltejs/adapter-vercel": "^3.0.1",
-        "@sveltejs/kit": "^1.11.0",
+        "@sveltejs/kit": "^1.22.3",
         "@types/node": "^18.7.14",
         "@typescript-eslint/eslint-plugin": "^5.36.1",
         "@typescript-eslint/parser": "^5.41.0",
