@@ -13,7 +13,7 @@
 
 <header class:menu={$menu} class:pinned={scroll > 50}>
     <h1>{getText('header')}</h1>
-    <button on:click={() => ($menu = !$menu)}  class:open={$menu}>
+    <button on:click={() => ($menu = !$menu)}  class:open={$menu} aria-label="menu-toggle">
         <span></span>
         <span></span>
         <span></span>

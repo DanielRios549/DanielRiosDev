@@ -20,7 +20,7 @@
     }
 </script>
 
-<button on:click={changeTheme}>
+<button on:click={changeTheme} aria-label="theme-switcher">
     <svelte:component this={icon}/>
 </button>
 
