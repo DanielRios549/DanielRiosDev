@@ -12,7 +12,9 @@
 </script>
 
 <section class:open={$menu}>
-    <ThemeSwitcher/>
+    {#if !import.meta.env.DEV}
+        <ThemeSwitcher/>
+    {/if}
     <nav>
         <ul>
             {#each links as [link, name]}

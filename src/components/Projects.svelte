@@ -1,12 +1,15 @@
 <script lang="ts">
-    import { projects, images } from '$/stores'
+    import { page } from '$app/stores'
     import Github from '$/icons/github.svg'
     import Link from '$/icons/link.svg'
+
+    $: images = $page.data.images
+    $: projects = $page.data.projects
 </script>
 
 <section>
-    {#each $projects as {name, stack, repo, link, image}}
-        {@const imageLink = image ? `${$images}/projects/${image}` : `${$images}/projects/no-image.png`}
+    {#each projects || [] as {name, stack, repo, link, image}}
+        {@const imageLink = image ? `${images}/projects/${image}` : `${images}/projects/no-image.png`}
         <article>
             <header>
                 <h3>{name}</h3>

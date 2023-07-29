@@ -25,7 +25,7 @@ export async function load({ locals }) {
             options[page] = {} as Option
         }
 
-        options[page][config] = value // TODO: Fix Typings
+        options[page][config] = value
     })
 
     return {

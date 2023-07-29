@@ -1,9 +1,15 @@
 <script lang="ts">
-    import { getText, options } from '$/stores'
+    import { page } from '$app/stores'
+    import { getMenu, getText } from '$/stores'
     import Title from '$/components/Title.svelte'
 
+    const links = getMenu('header')
     const text = getText('about')
-    const title = $options.about.title
+    const { title } = $page.data.options.about
+
+    const email = links.find((item) => {
+        return item[1] === 'Contact'
+    })?.at(0)
 </script>
 
 <section>
@@ -14,12 +20,13 @@
         </figcaption>
     </figure>
     <p>{text}</p>
-    <button><span>Contact</span></button>
+    <a href={email}><span>Contact</span></a>
 </section>
 
 <style lang="scss">
     section {
         @extend %centerLayout;
+
         display: grid;
         gap: 10px;
         grid-template:
@@ -50,7 +57,9 @@
             grid-area: text;
             font-size: clamp(1.3rem, 3vw, 1.7rem);
         }
-        button {
+        a {
+            @extend %center;
+
             border-radius: var(--radius);
             grid-area: footer;
             background-color: var(--highlight);
