@@ -12,8 +12,6 @@
     })?.at(0)
 
     const image = `${$page.data.images}/info/me.png`
-
-    console.log(image)
 </script>
 
 <section>

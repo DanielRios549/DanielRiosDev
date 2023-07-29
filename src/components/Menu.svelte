@@ -12,7 +12,7 @@
 </script>
 
 <section class:open={$menu}>
-    {#if !import.meta.env.DEV}
+    {#if import.meta.env.DEV}
         <ThemeSwitcher/>
     {/if}
     <nav>
