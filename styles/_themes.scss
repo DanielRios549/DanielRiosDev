@@ -9,7 +9,7 @@ body#light {
     --black: hsl(0deg 0% 19%);
     --highlight: hsl(172deg 83% 50%);
     --error: hsl(0deg 96% 61%);
-    --radius: 5px;
+    --radius: 0.5rem;
 }
 body,
 body#dark {
@@ -23,5 +23,5 @@ body#dark {
     --black: hsl(0deg 0% 19%);
     --highlight: hsl(172deg 83% 50%);
     --error: hsl(0deg 96% 61%);
-    --radius: 5px;
+    --radius: 0.5rem;
 }

@@ -10,13 +10,17 @@
     const email = links.find((item) => {
         return item[1] === 'Contact'
     })?.at(0)
+
+    const image = `${$page.data.images}/info/me.png`
+
+    console.log(image)
 </script>
 
 <section>
     <Title>{title}</Title>
     <figure>
         <figcaption>
-            <span>Image</span>
+            <img src="{$page.data.images}/info/me.jpg" alt="daniel_rios_image">
         </figcaption>
     </figure>
     <p>{text}</p>
@@ -40,7 +44,7 @@
             text-align: center;
             grid-template:
                 "header" 30px
-                "image" 50px
+                "image" 350px
                 "text" 1fr
                 "footer" 40px
                 / 1fr
@@ -52,6 +56,11 @@
         figure {
             grid-area: image;
             width: 200px;
+
+            img {
+                width: 100%;
+                border-radius: var(--radius);
+            }
         }
         p {
             grid-area: text;
