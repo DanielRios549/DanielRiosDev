@@ -19,10 +19,12 @@
         <ul>
             {#each links as [link, name]}
                 <li class:active={current === link}>
-                    <a on:click={() => ($menu = false)} href={link}>{name}</a>
-                    {#if !link.startsWith('/')}
-                        <Link/>
-                    {/if}
+                    <a on:click={() => ($menu = false)} href={link}>
+                        {name}
+                        {#if !link.startsWith('/')}
+                            <Link/>
+                        {/if}
+                    </a>
                 </li>
             {/each}
         </ul>
@@ -43,7 +45,6 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            padding-right: 15px;
 
             ul {
                 flex-direction: row;
@@ -57,9 +58,12 @@
                         width: 100%;
                     }
                     a {
-                        width: 100px;
+                        min-width: 6rem;
                         justify-content: center;
                         color: $color;
+                        height: 100%;
+                        gap: 1rem;
+                        padding: 0 1rem;
 
                         &::after {
                             content: "";
@@ -71,12 +75,11 @@
                             width: 0;
                             transition: width 200ms ease;
                         }
-                    }
-                    :global {
-                        svg {
-
-                            path {
-                                fill: var(--header-color) !important;
+                        :global {
+                            svg {
+                                path {
+                                    fill: var(--header-color) !important;
+                                }
                             }
                         }
                     }
@@ -109,13 +112,18 @@
                     width: min(300px, 70vw);
 
                     li {
-                        padding-left: 20px;
+                        padding: 0 20px;
 
                         &:not(:last-child) {
                             border-bottom: 2px solid var(--color2);
                         }
                         a {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
                             color: var(--text);
+                            height: 100%;
+                            width: 100%;
                         }
                     }
                 }
