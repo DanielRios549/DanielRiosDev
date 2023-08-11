@@ -16,7 +16,8 @@
         "lint": "eslint ."
     },
     "dependencies": {
-        "@supabase/supabase-js": "^2.26.0"
+        "@supabase/supabase-js": "^2.26.0",
+        "@vercel/analytics": "^1.0.2"
     },
     "devDependencies": {
         "@poppanator/sveltekit-svg": "^1.0.0",
