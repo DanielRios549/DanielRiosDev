@@ -1,6 +1,7 @@
 <script lang="ts">
     import { browser } from '$app/environment'
     import { menu, getText } from '$/stores'
+    import Text from '$/components/Text.svelte'
 
     let scroll = 0
 
@@ -12,11 +13,11 @@
 <svelte:window bind:scrollY={scroll}/>
 
 <header class:menu={$menu} class:pinned={scroll > 50}>
-    <h1>{getText('header')}</h1>
+    <h1><Text item={getText('header')}/></h1>
     <button on:click={() => ($menu = !$menu)}  class:open={$menu} aria-label="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <hr/>
+        <hr/>
+        <hr/>
     </button>
 </header>
 
@@ -36,7 +37,7 @@
             &.menu {
                 background-color: var(--color1);
 
-                button > span {
+                button > hr {
                     background-color: var(--text);
                 }
                 h1 {
@@ -66,21 +67,21 @@
                 padding: 10px;
 
                 &.open {
-                    span:nth-of-type(1) {
+                    hr:nth-of-type(1) {
                         top: 25%;
                         width: 80%;
                         transform: rotate(135deg);
                     }
-                    span:nth-of-type(2) {
+                    hr:nth-of-type(2) {
                         top: 0;
                         width: 80%;
                         transform: rotate(45deg);
                     }
-                    span:nth-of-type(3) {
+                    hr:nth-of-type(3) {
                         opacity: 0;
                     }
                 }
-                span {
+                hr {
                     position: relative;
                     border-radius: 10px;
                     background-color: var(--header-color, var(--white));

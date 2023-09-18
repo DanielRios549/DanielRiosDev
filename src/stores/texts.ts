@@ -1,11 +1,14 @@
 import { get } from 'svelte/store'
-import { savable } from '$/lib/store'
-import type { Text } from '$/types/texts'
+import { page } from '$app/stores'
+import type { Database } from '$/types/generated'
 
-export const texts = savable<Text[]>('menus', [], false)
+export function getText(location: string): [string, boolean] {
+    const items: Database['public']['Tables']['portfolio_texts']['Row'][] = get(page).data.texts
+    const find = items.filter((text) => text.type === location).at(0)
 
-export function getText(location: string): string {
-    const find = get(texts).filter((text) => text.type === location).at(0)?.content
+    if (find) {
+        return [find.content, !!find.html]
+    }
 
-    return find || 'No Text'
+    return ['No Text', false]
 }

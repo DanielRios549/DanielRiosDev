@@ -31,7 +31,7 @@ svg {
     height: var(--size, 32px);
 
     path {
-        fill: var(--icon) !important;
+        fill: var(--fill, var(--icon)) !important;
     }
 }
 fieldset {

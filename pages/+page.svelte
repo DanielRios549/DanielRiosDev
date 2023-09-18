@@ -1,10 +1,7 @@
 <script lang="ts">
-    import About from '$/components/About.svelte'
-    import Projects from '$/components/Projects.svelte'
-    import Title from '$/components/Title.svelte'
-    import { images, options, getText } from '$/stores'
+    import { page } from '$app/stores'
 
-    const { title, description, banner } = $options.home
+    const { title, description } = $page.data.options.home
 </script>
 
 <svelte:head>
@@ -13,91 +10,16 @@
 </svelte:head>
 
 <template>
-    <figure>
-        <figcaption>
-            {@html getText('resume')}
-        </figcaption>
-        <img src={`${$images}/info/${banner}`} alt="Banner"/>
-    </figure>
-    <About/>
-    <section>
-        <Title>Projects</Title>
-        <Projects/>
-    </section>
+    <span>This project still in development.</span>
 </template>
 
 <style lang="scss">
-    figure {
-        $from: hsl(254deg 96% 32%);
-        $to: hsl(243deg 93% 16%);
+    span {
+        @extend %center;
 
-        background: $from;
-        background: linear-gradient(45deg, $from 0%, $to 100%);
-        position: relative;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 240px);
-
-        figcaption {
-            padding: 0 50px;
-            grid-column: 1/2;
-            grid-row: 2/3;
-            z-index: 10;
-
-            @media (--mobileSmall) {
-                padding: 0;
-                grid-column: 1/3;
-
-                :global(h1) {
-                    align-items: center !important;
-                    text-align: center;
-                }
-            }
-            :global {
-                h1 {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
-                    font-size: clamp(3rem, 6vw, 4rem);
-                    color: var(--white);
-                    z-index: 10;
-                    height: 100%;
-
-                    span {
-                        color: var(--highlight);
-                    }
-                }
-            }
-        }
-        img {
-            grid-column: 1/3;
-            grid-row: 1/3;
-            position: relative;
-            height: 100%;
-            width: clamp(100px, 100%, 1440px);
-            object-fit: cover;
-            justify-self: center;
-            z-index: 9;
-
-            &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 9;
-                display: block;
-                height: 100%;
-                width: 100%;
-                @extend %transparency;
-            }
-        }
-    }
-    section {
-        @extend %centerLayout;
-
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        background-color: var(--error);
+        height: 2rem;
+        width: 95vw;
+        margin: 0 auto;
     }
 </style>
