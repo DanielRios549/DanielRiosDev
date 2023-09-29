@@ -4,22 +4,40 @@ This is the repository for my personal portfolio website.
 
 ## It uses the following technologies:
 
-[Svelte](https://svelte.dev/), [SvelteKit](https://kit.svelte.dev/), [Typescript](https://www.typescriptlang.org/), [SASS](https://sass-lang.com/), [PostCSS](https://postcss.org/), [ESLint](https://eslint.org/), [Stylelint](https://stylelint.io/) and [Supabase](https://supabase.com/)
+[Svelte](https://svelte.dev/), [SvelteKit](https://kit.svelte.dev/), [Typescript](https://www.typescriptlang.org/), [SASS](https://sass-lang.com/), [PostCSS](https://postcss.org/), [ESLint](https://eslint.org/), [Stylelint](https://stylelint.io/), [Supabase](https://supabase.com/) and [Bun](https://bun.sh/)
 
-### To install the dependencies use yarn.
+### This project uses Bun, you need to install it in your system. You could use the command from bun website
 
 ```bash
-# Install it globally
-npm i -g yarn
-# Install the dependencies
-yarn
-
+curl -fsSL https://bun.sh/install | bash
 ```
 
-### To run the dev server, run
-
+### To install the dependencies
 ```bash
+bun install
+```
 
-yarn dev
+### To start the Supabase Environment
+```bash
+bun start
+```
 
+### To stop the Supabase Environment
+```bash
+bun stop
+```
+
+### To generate Supabase Typings
+```bash
+bun types
+```
+
+### To run the dev server
+```bash
+bun dev
+```
+
+### To build for production
+```bash
+bun build
 ```
