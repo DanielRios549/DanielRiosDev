@@ -32,20 +32,6 @@
         z-index: 11;
         transition: all 200ms ease;
 
-        @media(--mobile) {
-            justify-content: space-between;
-
-            &.menu {
-                background-color: var(--color1);
-
-                button > hr {
-                    background-color: var(--text);
-                }
-                h1 {
-                    color: var(--text);
-                }
-            }
-        }
         &.pinned {
             @extend %transparency;
         }
@@ -59,8 +45,28 @@
 
             background-color: transparent;
             align-self: stretch;
+        }
+    }
+    @media(--large) {
+        header button hr {
+            display: none;
+        }
+    }
+    @media(--mobile) {
+        header {
+            justify-content: space-between;
 
-            @media (--mobile) {
+            &.menu {
+                background-color: var(--color1);
+
+                button > hr {
+                    background-color: var(--text);
+                }
+                h1 {
+                    color: var(--text);
+                }
+            }
+            button {
                 width: 60px;
                 flex-direction: column;
                 align-items: flex-end;

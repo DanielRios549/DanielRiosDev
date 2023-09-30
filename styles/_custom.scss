@@ -1,6 +1,9 @@
-@custom-selector :--text h1, h2, h3, h4, h5, h6, span, p;
-@custom-selector :--input input, textarea;
-@custom-selector :--submit input[type="submit"];
+@custom-selector :--heading :is(h1, h2, h3, h4, h5, h6);
+@custom-selector :--text :is(h1, h2, h3, h4, h5, h6, span, p);
+@custom-selector :--button :is(button, input[type='submit'], input[type='button']);
+@custom-selector :--input :is(input, textarea);
+@custom-selector :--input-text :is(input[type="text"], input[type="password"], input[type="email"], textarea);
+@custom-selector :--submit :is(input[type="submit"], button[type="submit"]);
 @custom-selector :--svg :global(svg);
 
 %center {

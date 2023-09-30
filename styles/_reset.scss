@@ -30,7 +30,7 @@ svg {
     width: var(--size, 32px);
     height: var(--size, 32px);
 
-    path {
+    &:not(.colorized) path {
         fill: var(--fill, var(--icon)) !important;
     }
 }

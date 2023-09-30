@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores'
-    import Text from '$/components/Text.svelte'
+    import Banner from '$/components/Banner.svelte'
 
     const { title, description } = $page.data.options.home
 </script>
@@ -10,16 +10,10 @@
     <meta name="description" content={description}/>
 </svelte:head>
 
-<section>
-    <header>
-        <h2><Text item={$page.data.texts.resume}/></h2>
-    </header>
-</section>
+<template>
+    <Banner/>
+</template>
 
 <style lang="scss">
-    section {
-        :--heading {
-            color: blue
-        }
-    }
+
 </style>

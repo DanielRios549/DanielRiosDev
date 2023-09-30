@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 100 100"
+   fill="none"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="python.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="6.46"
+     inkscape:cx="50.077399"
+     inkscape:cy="50"
+     inkscape:window-width="1920"
+     inkscape:window-height="1005"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5" />
+  <g
+     id="Python"
+     inkscape:export-filename="/home/daniel/Server/DanielRiosDev/public/images/python.png"
+     inkscape:export-xdpi="329.88199"
+     inkscape:export-ydpi="329.88199">
+    <path
+       id="Vector"
+       d="M50.0979 10.4167C46.8583 10.4271 44.6125 10.7125 41.8979 11.1813C33.8812 12.5771 32.4208 15.5083 32.4208 20.9104V29.1667H51.1708V33.3333H31.7083H22.6458C17.1542 33.3333 12.3479 35.9208 10.825 42.1229C9.10417 49.2417 9.02708 53.7 10.825 61.1333C12.1896 66.6771 15.1958 70.8333 20.6896 70.8333H28.2562V60.2C28.2562 54.0208 33.8521 47.9167 40.2646 47.9167H55.3396C60.5958 47.9167 65.7562 44.0375 65.7562 38.7979V20.9104C65.7562 15.8292 62.0917 12.0292 56.9687 11.1771C57.0958 11.1646 53.3104 10.4042 50.0979 10.4167ZM39.7146 18.75C41.425 18.75 42.8396 20.1604 42.8396 21.8792C42.8396 23.6146 41.425 25 39.7146 25C37.9708 25 36.5896 23.6167 36.5896 21.8792C36.5896 20.1667 37.9708 18.75 39.7146 18.75Z"
+       fill="#0277BD" />
+    <path
+       id="Vector_2"
+       d="M48.0792 89.5833C51.3188 89.5729 53.5646 89.2875 56.2792 88.8188C64.2958 87.4229 65.7563 84.4917 65.7563 79.0896V70.8333H47.0063V66.6667H66.4708H75.5333C81.025 66.6667 85.8313 64.0792 87.3542 57.8771C89.075 50.7583 89.1521 46.3 87.3542 38.8667C85.9875 33.3229 82.9813 29.1667 77.4875 29.1667H69.9208V39.8C69.9208 45.9792 64.325 52.0833 57.9125 52.0833H42.8375C37.5813 52.0833 32.4208 55.9625 32.4208 61.2021V79.0896C32.4208 84.1708 36.0854 87.9708 41.2083 88.8229C41.0813 88.8354 44.8667 89.5958 48.0792 89.5833ZM58.4646 81.25C56.7542 81.25 55.3396 79.8396 55.3396 78.1208C55.3396 76.3854 56.7542 75 58.4646 75C60.2083 75 61.5896 76.3833 61.5896 78.1208C61.5896 79.8333 60.2063 81.25 58.4646 81.25Z"
+       fill="#FFC107" />
+  </g>
+</svg>
