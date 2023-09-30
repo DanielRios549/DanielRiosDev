@@ -26,7 +26,6 @@
         return () => data.subscription.unsubscribe()
     })
 
-    $: mixed = $page.url.pathname === '/'
     // $: ready = import.meta.env.DEV
     $: vh = 0
 
@@ -41,7 +40,8 @@
 <template>
     <Header/>
     <Menu/>
-    <main class:mixed>
+    <main>
+        <span>This project still in development.</span>
         <slot/>
     </main>
 </template>
@@ -64,25 +64,20 @@
             "main" 1fr
             / 1fr
         ;
-        @supports (body:has()) {
-            &:has(main:not(.mixed)) {
-                --header-color: var(--text);
-            }
-            &:has(main.mixed) {
-                --header-color: var(--white);
-            }
-        }
         > main {
+            grid-area: main;
             display: flex;
             flex-direction: column;
             gap: 20px;
             margin-bottom: 20px;
 
-            &:not(.mixed) {
-                grid-area: main;
-            }
-            &.mixed {
-                grid-area: main;
+            > span {
+                @extend %center;
+
+                background-color: var(--error);
+                height: 2rem;
+                width: 95vw;
+                margin: 0 auto;
             }
         }
     }

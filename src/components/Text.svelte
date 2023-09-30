@@ -1,14 +1,16 @@
 <script lang="ts">
-    import type { getText } from '$/stores/texts'
+    import type { Text } from '$/types'
 
-    export let item: ReturnType<typeof getText>
+    export let item: Text | string
+    export let html: boolean | null = typeof item !== 'string' ? item?.html : false
+
+    $: content = typeof item !== 'string' ? item.content : item
 </script>
 
 <template>
-    {#if item[1]}
-        {@html item[0]}
+    {#if html}
+        {@html content}
     {:else}
-        {item[0]}
+        {content}
     {/if}
-
 </template>

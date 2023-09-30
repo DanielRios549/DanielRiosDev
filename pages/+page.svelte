@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores'
+    import Text from '$/components/Text.svelte'
 
     const { title, description } = $page.data.options.home
 </script>
@@ -9,17 +10,16 @@
     <meta name="description" content={description}/>
 </svelte:head>
 
-<template>
-    <span>This project still in development.</span>
-</template>
+<section>
+    <header>
+        <h2><Text item={$page.data.texts.resume}/></h2>
+    </header>
+</section>
 
 <style lang="scss">
-    span {
-        @extend %center;
-
-        background-color: var(--error);
-        height: 2rem;
-        width: 95vw;
-        margin: 0 auto;
+    section {
+        :--heading {
+            color: blue
+        }
     }
 </style>

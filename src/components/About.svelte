@@ -1,17 +1,15 @@
 <script lang="ts">
     import { page } from '$app/stores'
-    import { getMenu, getText } from '$/stores'
+    import { getMenu } from '$/stores'
     import Title from '$/components/Title.svelte'
+    import Text from '$/components/Text.svelte'
 
     const links = getMenu('header')
-    const text = getText('about')
     const { title } = $page.data.options.about
 
     const email = links.find((item) => {
         return item[1] === 'Contact'
     })?.at(0)
-
-    const image = `${$page.data.images}/info/me.png`
 </script>
 
 <section>
@@ -21,8 +19,12 @@
             <img src="{$page.data.images}/info/me.jpg" alt="daniel_rios_image">
         </figcaption>
     </figure>
-    <p>{text}</p>
-    <a href={email}><span>Contact</span></a>
+    <p>
+        <Text item={$page.data.texts.about}/>
+    </p>
+    <a href={email}>
+        <span>Contact</span>
+    </a>
 </section>
 
 <style lang="scss">
@@ -48,8 +50,14 @@
                 / 1fr
             ;
         }
-        :global(header) {
-            grid-area: header;
+        :global {
+            header {
+                grid-area: header;
+            }
+            a:hover {
+                text-decoration: underline;
+                width: auto;
+            }
         }
         figure {
             grid-area: image;

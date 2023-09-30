@@ -1,6 +1,7 @@
 <script lang="ts">
     import { browser } from '$app/environment'
-    import { menu, getText } from '$/stores'
+    import { page } from '$app/stores'
+    import { menu } from '$/stores'
     import Text from '$/components/Text.svelte'
 
     let scroll = 0
@@ -13,7 +14,7 @@
 <svelte:window bind:scrollY={scroll}/>
 
 <header class:menu={$menu} class:pinned={scroll > 50}>
-    <h1><Text item={getText('header')}/></h1>
+    <h1><Text item={$page.data.texts.header}/></h1>
     <button on:click={() => ($menu = !$menu)}  class:open={$menu} aria-label="menu-toggle">
         <hr/>
         <hr/>

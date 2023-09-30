@@ -37,7 +37,7 @@
 </script>
 
 <section class:open={$menuStatus}>
-    {#if !import.meta.env.DEV}
+    {#if import.meta.env.DEV}
         <ThemeSwitcher/>
     {/if}
     <nav>

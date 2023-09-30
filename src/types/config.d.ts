@@ -7,3 +7,10 @@ export interface Option {
 }
 
 export type Options = Record<Pages, Option>
+
+export type Text = {
+    html: boolean | null
+    content: string
+}
+
+export type Texts = Record<'header' | 'about' | 'resume', Text>
