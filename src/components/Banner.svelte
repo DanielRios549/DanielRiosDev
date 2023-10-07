@@ -32,11 +32,10 @@
     section {
         position: relative;
         height: 500px;
-        width: 100vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding-left: 5%;
+        margin-inline: 10%;
         gap: 3rem;
 
         header {
@@ -58,7 +57,7 @@
 
             position: absolute;
             top: var(--top);
-            left: calc(40% + var(--left));
+            left: calc(45% + var(--left));
         }
     }
     @media (--large) {

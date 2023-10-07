@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 100 100"
+   fill="none"
+   version="1.1"
+   id="svg7"
+   sodipodi:docname="prisma.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:export-filename="/home/daniel/Server/DanielRiosDev/public/images/svelte.png"
+   inkscape:export-xdpi="329.88199"
+   inkscape:export-ydpi="329.88199"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs11">
+    <clipPath
+       id="clip0_29_169">
+      <rect
+         width="64"
+         height="64"
+         fill="#ffffff"
+         id="rect4"
+         x="0"
+         y="0" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview9"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="6.46"
+     inkscape:cx="49.845201"
+     inkscape:cy="50"
+     inkscape:window-width="1920"
+     inkscape:window-height="1005"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7" />
+  <g
+     id="Prisma Orm"
+     clip-path="url(#clip0_29_169)"
+     transform="matrix(1.3457766,0,0,1.3457766,5.9286196,7.8319206)"
+     style="stroke-width:0.743065">
+    <path
+       id="Vector"
+       d="M 59.0453,48.0467 36.916,1.90534 C 35.776,-0.471998 32.4667,-0.667998 31.0533,1.55867 L 6.51467,40.236 c -0.52933,0.8333 -0.51334,1.9013 0.03866,2.72 L 18.9147,61.2733 c 0.7666,1.136 2.1786,1.6494 3.4973,1.2707 L 57.0013,52.6 c 1.9427,-0.5587 2.9174,-2.7307 2.044,-4.5533 z m -4.888,1.6586 -29.0906,8.1454 C 24.3933,58.04 23.76,57.444 23.9067,56.76 L 34.22,8.63067 C 34.4053,7.764 35.584,7.624 35.968,8.42133 L 54.988,47.916 c 0.3307,0.7253 -0.0627,1.5747 -0.8307,1.7893 z"
+       fill="#4db6ac"
+       style="stroke-width:0.552146" />
+  </g>
+</svg>

@@ -4,19 +4,22 @@
     import Python from '$/icons/python.svg'
     import Node from '$/icons/nodejs.svg'
     import React from '$/icons/react.svg'
+    import Prisma from '$/icons/prisma.svg'
+    import Sass from '$/icons/sass.svg'
+    import GraphQL from '$/icons/graphql.svg'
 
     const technologies: Record<string, [string, number, typeof Svelte | null][]> = {
         'Front End': [
             ['Svelte', 90, Svelte],
             ['Typescript', 80, Typescript],
-            ['Sass', 85, null],
+            ['Sass', 85, Sass],
             ['React', 40, React]
         ],
         'Back End': [
             ['Node', 60, Node],
             ['Python', 50, Python],
-            ['Prisma', 60, null],
-            ['GraphQL', 40, null]
+            ['Prisma', 60, Prisma],
+            ['GraphQL', 40, GraphQL]
         ]
     }
 </script>
@@ -34,8 +37,8 @@
                 <div>
                     {#each items as [tech, percentage, icon]}
                         <section class="item">
-                            <svelte:component class="colorized" this={icon}/>
                             <header>
+                                <svelte:component class="colorized" this={icon}/>
                                 <h3>{tech}</h3>
                             </header>
                             <progress max="100" value={percentage}>{percentage}%</progress>
@@ -49,10 +52,10 @@
 
 <style lang="scss">
     .wrapper {
-        @extend %centerLayout;
-
+        background-color: var(--color2);
         display: flex;
         flex-direction: column;
+        padding-block: 3rem;
 
         :--heading {
             @extend %center;
@@ -61,6 +64,8 @@
             font-size: 3rem;
         }
         .content {
+            @extend %centerLayout;
+
             display: flex;
             justify-content: space-evenly;
             width: 100%;
@@ -75,10 +80,10 @@
                     font-size: 1.5rem;
                 }
                 > div {
-                    background-color: var(--color2);
+                    background-color: var(--color1);
                     display: flex;
                     flex-direction: column;
-                    gap: 1.5rem;
+                    gap: 0.5rem;
                     padding: 2rem;
 
                     .item {
@@ -86,18 +91,22 @@
                         flex-direction: row;
                         justify-content: space-between;
                         align-items: center;
-                        gap: 2rem;
 
-                        :global(svg + header) {
-                            display: none;
-                        }
-                        :--svg {
-                            --size: 3rem;
-                        }
-                        :--heading {
-                            font-size: 1.2rem;
-                            width: 3rem;
-                            height: 3rem;
+                        header {
+                            @extend %center;
+
+                            flex-direction: column;
+                            width: 5rem;
+                            height: 5rem;
+
+                            :--heading {
+                                font-size: 1.2rem;
+                            }
+                            :--svg {
+                                --size: 3.5rem;
+
+                                flex-shrink: 0;
+                            }
                         }
                         progress {
                             appearance: none;
@@ -126,10 +135,15 @@
         }
     }
     @media (--mobile) {
-        .wrapper .content {
-            flex-direction: column;
-            width: 25rem;
-            margin: 0 auto;
+        .wrapper {
+            gap: 2rem;
+
+            .content {
+                flex-direction: column;
+                width: 25rem;
+                margin: 0 auto;
+                gap: 1rem;
+            }
         }
     }
 </style>

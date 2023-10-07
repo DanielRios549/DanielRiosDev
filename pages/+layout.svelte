@@ -1,7 +1,7 @@
 <script lang="ts">
     import { invalidate } from '$app/navigation'
     import { browser } from '$app/environment'
-    import { page } from '$app/stores'
+    // import { page } from '$app/stores'
     import { onMount } from 'svelte'
     // import { wait } from '$/lib'
     import { theme } from '$/stores'
@@ -41,7 +41,7 @@
     <Header/>
     <Menu/>
     <main>
-        <span>This project still in development.</span>
+        <dialog open>This project still in development.</dialog>
         <slot/>
     </main>
 </template>
@@ -71,13 +71,18 @@
             gap: 20px;
             margin-bottom: 20px;
 
-            > span {
+            > dialog {
                 @extend %center;
 
+                position: sticky;
+                top: calc($header + 1rem);
+                border: 2px solid var(--color1);
                 background-color: var(--error);
+                color: var(--text);
                 height: 2rem;
                 width: 95vw;
                 margin: 0 auto;
+                z-index: 12;
             }
         }
     }

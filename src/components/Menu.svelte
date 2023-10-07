@@ -158,7 +158,7 @@
             height: 100vh;
             align-items: center;
             flex-direction: column;
-            z-index: 9;
+            z-index: 13;
             gap: 5rem;
 
             &:not(.open) {
