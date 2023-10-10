@@ -6,7 +6,7 @@
     import LinkedIn from '$/icons/linkedin.svg'
     import Github from '$/icons/github.svg'
 
-    const links = [
+    const links: [string, string][] = [
         [
             '/',
             'Home'
@@ -20,7 +20,7 @@
             'Contact'
         ]
     ]
-    const social = [
+    const social: [string, string, typeof LinkedIn][] = [
         [
             'https://www.linkedin.com/in/danielrios549',
             'LinkedIn',
@@ -36,7 +36,7 @@
     $: current = $page.url.pathname
 </script>
 
-<section class:open={$menuStatus}>
+<div class:open={$menuStatus} class="wrapper">
     {#if import.meta.env.DEV}
         <ThemeSwitcher/>
     {/if}
@@ -44,7 +44,7 @@
         <ul>
             {#each links as [link, name]}
                 <li class:active={current === link}>
-                    <a on:click={() => ($menuStatus = false)} href={link}>
+                    <a data-sveltekit-replacestate={link.includes('#') || null} on:click={() => ($menuStatus = false)} href={link}>
                         {name}
                     </a>
                 </li>
@@ -64,10 +64,10 @@
     {#if $page.data.session}
         <span>{$page.data.info?.name || $page.data.session.user.email}</span>
     {/if}
-</section>
+</div>
 
 <style lang="scss">
-    section {
+    .wrapper {
         transition: top 200ms ease;
         display: flex;
         justify-self: flex-end;
@@ -98,13 +98,13 @@
         }
     }
     @media (--desktop) {
-        section {
+        .wrapper {
             width: 50vw;
             justify-content: space-between;
         }
     }
     @media (--tablet) {
-        section menu li {
+        .wrapper menu li {
             width: 4rem;
 
             a {
@@ -119,7 +119,7 @@
     @media (--large) {
         $color: var(--header-color, var(--text));
 
-        section {
+        .wrapper {
             grid-area: header;
             position: sticky;
             top: 0;
@@ -150,7 +150,7 @@
         }
     }
     @media (--mobile) {
-        section {
+        .wrapper {
             background-color: var(--color1);
             position: fixed;
             top: 60px;
@@ -175,6 +175,7 @@
             :is(ul, menu) {
                 gap: 2px;
                 width: min(300px, 70vw);
+                flex-wrap: wrap;
 
                 li {
                     a {

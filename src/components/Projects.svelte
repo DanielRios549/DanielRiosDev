@@ -1,192 +1,181 @@
 <script lang="ts">
     import { page } from '$app/stores'
-    import Github from '$/icons/github.svg'
+    import Lock from '$/icons/lock.svg'
     import Link from '$/icons/link.svg'
 
     $: images = $page.data.images
     $: projects = $page.data.projects
 </script>
 
-<section>
-    {#each projects || [] as {name, stack, repo, link, image}}
-        {@const imageLink = image ? `${images}/projects/${image}` : `${images}/projects/no-image.png`}
-        <article>
-            <header>
-                <h3>{name}</h3>
-            </header>
-            <figure>
-                <figcaption></figcaption>
-                <img src={imageLink} alt="{name} Image">
-            </figure>
-            <span class="stack">{stack}</span>
-            <span class="repo">
-                <a href={repo} target="_blank" rel="noreferrer">
-                    <Github/>
-                    <span>Repo</span>
-                </a>
-            </span>
-            {#if link}
-                <span class="link">
-                    <a href={link} target="_blank" rel="noreferrer">
-                        <Link/>
-                        <span>Open</span>
-                    </a>
-                </span>
-            {/if}
-        </article>
-    {/each}
+<section id="projects" class="wrapper">
+    <header>
+        <h2>Projects</h2>
+    </header>
+    <div class="content">
+        {#each projects as {name, stack, repo, link, image}}
+            {@const imageLink = image ? `${images}/projects/${image}` : '/images/project.jpg'}
+            <article>
+                <header>
+                    <h3>{name}</h3>
+                </header>
+                <figure>
+                    <figcaption>{name}</figcaption>
+                    <img src={imageLink} alt="{name} Image">
+                </figure>
+                <div>
+                    <span class="stack">{stack}</span>
+                    <span class="repo">
+                        {#if repo}
+                            <a href={repo} target="_blank" rel="noreferrer">
+                                <span>Repo</span>
+                            </a>
+                        {:else}
+                           <Lock/>
+                        {/if}
+                    </span>
+                    {#if link}
+                        <span class="link">
+                            <a href={link} target="_blank" rel="noreferrer">
+                                <span>View</span>
+                                <Link/>
+                            </a>
+                        </span>
+                    {/if}
+                </div>
+
+            </article>
+        {/each}
+    </div>
 </section>
 
-
 <style lang="scss">
-    section {
-        width: 100%;
+    .wrapper {
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 10px;
+        flex-direction: column;
+        gap: 1rem;
 
-        @media (--mobile) {
-            justify-content: center;
+        :--heading {
+            @extend %sectionHeader;
         }
-        article {
-            width: min(330px, 90vw);
-            max-width: 330px;
-            flex: 1 1 250px;
-            text-align: center;
-            display: grid;
-            place-items: center;
-            grid-template:
-                "image link" 80px
-                "image ." 120px
-                "spacer spacer" 5px
-                "header repo" 50px
-                "stack repo" 30px
-                / 1fr 60px
-            ;
-            @media (--mobile) {
-                figcaption {
-                    backdrop-filter: blur(4px) opacity(1) !important;
-                }
-                .link {
-                    opacity: 1 !important;
-                }
-            }
-            @media (--mobileSmall) {
-                grid-template:
-                    "image link . " 200px
-                    "image link ." 1fr
-                    "spacer spacer spacer" 5px
-                    "header header header" 50px
-                    "stack stack stack" min-content
-                    "repo repo repo" 50px
-                    / 1fr 200px 1fr
-                ;
-                .repo a {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                }
-                .link {
-                    :global {
-                        svg {
-                            --size: 64px;
-                        }
-                    }
-                    span {
-                        font-size: 2rem;
-                    }
-                }
-            }
-            &:hover {
-                figcaption {
-                    backdrop-filter: blur(4px) opacity(1);
-                }
-                .link {
-                    opacity: 1;
-                }
-            }
-            > * {
-                @extend %center;
+        .content {
+            $gap: 1rem;
 
-                background-color: var(--color2);
-                height: 100%;
-                width: 100%;
-            }
-            header {
-                grid-area: header;
-                z-index: 8;
+            display: flex;
+            gap: $gap;
+            margin: 0 auto;
+
+            :is(figcaption, article header)  {
+                display: none;
             }
             figure {
-                border-top-left-radius: var(--radius);
-                border-top-right-radius: var(--radius);
-                position: relative;
-                width: 100%;
-                height: 100%;
-                grid-area: image;
-                grid-column: 1/4;
-                z-index: 7;
-                display: flex;
-                justify-content: center;
-                overflow: hidden;
+                background-color: var(--text);
 
-                figcaption {
-                    background-color: rgb(0 0 0 / 50%);
-                    box-shadow: inset 0 -10px 100px hsl(0deg 0% 0%);
-                    backdrop-filter: blur(4px) opacity(0);
-                    position: absolute;
-                    height: 100%;
-                    width: 100%;
-                    transition: backdrop-filter 500ms ease;
-                }
                 img {
-                    width: max(100%, 500px);
-                    height: 100%;
                     object-fit: cover;
+                    width: 100%;
+                    height: 100%;
                 }
             }
-            .stack {
-                border-bottom-left-radius: var(--radius);
-                grid-area: stack;
-                z-index: 8;
-            }
-            .repo {
-                border-bottom-right-radius: var(--radius);
-                grid-area: repo;
-                z-index: 8;
+            article {
+                $height: 3rem;
 
-                a {
-                    @extend %center;
+                display: flex;
+                flex-direction: column;
+                gap: $gap;
 
-                    flex-direction: column;
-                    height: auto !important;
+                div {
+                    display: flex;
+                    gap: $gap;
 
-                    @media (--mobileSmall) {
-                        flex-direction: row !important;
-                    }
+                    span {
+                        @extend %center;
 
-                }
-            }
-            .link {
-                background-color: transparent;
-                opacity: 0;
-                grid-area: link;
-                transition: opacity 300ms linear;
-                z-index: 8;
+                        height: $height;
 
-                a {
-                    @extend %center;
+                        :--svg {
+                            --size: 1.5rem;
+                        }
+                        a {
+                            @extend %center;
 
-                    flex-direction: column;
-
-                    :global {
-                        svg path {
-                            fill: var(--white) !important;
+                            width: 100%;
+                            height: $height;
                         }
                     }
-                    span {
-                        color: var(--white) !important;
+                    .stack {
+                        @extend %center;
+
+                        height: $height;
+                        color: var(--text);
                     }
+                    .repo {
+                        color: var(--text);
+
+
+                        :--svg {
+                            --fill: var(--text);
+                        }
+                        a {
+                            color: var(--text);
+                        }
+                    }
+                    .link {
+                        background-color: var(--highlight);
+
+                        :--svg {
+                            --fill: color: var(--text);
+                        }
+
+                        a {
+                            color: var(--color2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (--large) {
+        .wrapper .content {
+            background-color: var(--color1);
+            justify-content: center;
+            flex-wrap: wrap;
+
+            article {
+                background-color: var(--color2);
+                width: 25rem;
+                padding: 1rem;
+
+                figure {
+                    width: 100%;
+                    height: 12rem;
+                }
+                div {
+                    justify-content: space-between;
+
+                    .repo {
+                        background-color: var(--color1);
+                        width:7rem;
+                    }
+                    .link {
+                        width: 10rem;
+                    }
+                }
+            }
+        }
+    }
+    @media (--mobile) {
+        .wrapper .content {
+            flex-direction: column;
+
+            figure {
+                width: 90vw;
+                height: min(calc(90vw / 1.75), 20rem);
+            }
+            div {
+                flex-direction: column;
+
+                .repo {
+                    background-color: var(--color2);
                 }
             }
         }

@@ -21,8 +21,9 @@
     <header>
         <Text item={$page.data.texts.resume}/>
     </header>
-    <span><Text item={$page.data.texts.about}/></span>
-
+    <span>
+        <Text item={$page.data.texts.about}/>
+    </span>
     {#each icons as [top, left, icon]}
         <svelte:component class="colorized" this={icon} style="--top:{top}%;--left:{left}%;"/>
     {/each}
@@ -45,7 +46,6 @@
             }
             :global(:--text) {
                 color: var(--highlight);
-                font-size: 4rem;
             }
         }
         > span {
@@ -61,8 +61,13 @@
         }
     }
     @media (--large) {
-        section span {
-            width: 40%;
+        section {
+            header :global(:--text) {
+                font-size: 4rem;
+            }
+            span {
+                width: 40%;
+            }
         }
     }
     @media (--mobileLarge) {
@@ -80,6 +85,9 @@
             padding: 0;
             align-items: center;
 
+            header :global(:--text) {
+                font-size: clamp(1vw, 2.5rem, 3rem);
+            }
             :global(:--text) {
                 text-align: center;
             }

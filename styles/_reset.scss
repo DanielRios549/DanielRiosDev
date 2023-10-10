@@ -11,6 +11,7 @@
 }
 html {
     background-color: var(--color1, hsl(216deg 7% 14%));
+    scroll-behavior: smooth;
 }
 :--text {
     color: var(--text);

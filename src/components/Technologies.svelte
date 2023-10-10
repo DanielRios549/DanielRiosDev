@@ -26,7 +26,7 @@
 
 <section class="wrapper">
     <header>
-        <h1>Technologies</h1>
+        <h2>Technologies</h2>
     </header>
     <div class="content">
         {#each Object.entries(technologies) as [name, items]}
@@ -58,23 +58,18 @@
         padding-block: 3rem;
 
         :--heading {
-            @extend %center;
-
-            color: var(--text);
-            font-size: 3rem;
+            @extend %sectionHeader;
         }
         .content {
             @extend %centerLayout;
 
             display: flex;
             justify-content: space-evenly;
-            width: 100%;
 
             .group {
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
-                width: min(95vw, 25rem);
 
                 :--heading {
                     font-size: 1.5rem;
@@ -84,7 +79,6 @@
                     display: flex;
                     flex-direction: column;
                     gap: 0.5rem;
-                    padding: 2rem;
 
                     .item {
                         display: flex;
@@ -110,7 +104,7 @@
                         }
                         progress {
                             appearance: none;
-                            width: 15rem;
+                            width: 75%;
 
                             &::-webkit-progress-bar {
                                 background-color: var(--white);
@@ -132,6 +126,19 @@
             &:nth-child(2) .item progress {
                 transform: rotate(-180deg);
             }
+            > div {
+                padding: 2rem;
+            }
+        }
+    }
+    @media (--desktop) {
+        .wrapper .content .group {
+            width: 30rem;
+        }
+    }
+    @media (--tablet) {
+        .wrapper .content .group {
+            width: 20rem;
         }
     }
     @media (--mobile) {
@@ -140,9 +147,17 @@
 
             .content {
                 flex-direction: column;
-                width: 25rem;
+                width: min(25rem, 95vw);
                 margin: 0 auto;
                 gap: 1rem;
+
+                .group {
+                    width: 100%;
+
+                    > div {
+                        padding: 0.5rem;
+                    }
+                }
             }
         }
     }
