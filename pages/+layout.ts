@@ -1,4 +1,4 @@
-import { PUBLIC_API_URL, PUBLIC_API_KEY } from '$env/static/public'
+import { env } from '$env/dynamic/public'
 import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit'
 import { dev } from '$app/environment'
 import { inject } from '@vercel/analytics'
@@ -10,8 +10,8 @@ export async function load({ fetch, data, depends }) {
     depends('supabase:auth')
 
     const { auth } = createSupabaseLoadClient<Database>({
-        supabaseUrl: PUBLIC_API_URL,
-        supabaseKey: PUBLIC_API_KEY,
+        supabaseUrl: env.PUBLIC_API_URL,
+        supabaseKey: env.PUBLIC_API_KEY,
         event: { fetch },
         serverSession: data.session,
         cookieOptions: {

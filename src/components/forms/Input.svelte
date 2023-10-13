@@ -53,7 +53,11 @@
 </template>
 
 <style lang="scss">
-    input {
+    :--input {
+        border: none;
+        padding-left: 1rem;
+        color: var(--text);
+
         &:placeholder-shown {
             & + label {
                 z-index: 11;
@@ -64,7 +68,7 @@
 
             + label {
                 z-index: 9;
-                top: -90px;
+                top: -5rem;
                 left: 1.8rem;
                 color: var(--text);
             }
@@ -73,7 +77,7 @@
             color: transparent;
         }
         &.error {
-            border: 2px solid var(--error);
+            border: 0.2rem solid var(--error);
 
             ~ span {
                 top: -2.4rem;

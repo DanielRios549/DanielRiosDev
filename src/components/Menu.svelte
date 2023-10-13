@@ -54,7 +54,7 @@
     <menu>
         {#each social as [link, name, icon]}
             <li>
-                <a href={link} target="_blank">
+                <a href={link} target="_blank" aria-label="{name} link">
                     <svelte:component this={icon}/>
                     <span>{name}</span>
                 </a>

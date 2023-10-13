@@ -23,17 +23,15 @@
 
 </script>
 
-<template>
-    <form {action} method="POST" on:submit|preventDefault={form.handleSubmit} use:enhance>
-        {#if $page.form?.error}
-            <section class="error">
-                <span>{$page.form?.error}</span>
-            </section>
-        {/if}
-        <slot/>
-        <button type="submit">{submitText}</button>
-    </form>
-</template>
+<form {action} method="POST" on:submit|preventDefault={form.handleSubmit} use:enhance>
+    {#if $page.form?.error}
+        <section class="error">
+            <span>{$page.form?.error}</span>
+        </section>
+    {/if}
+    <slot/>
+    <button type="submit">{submitText}</button>
+</form>
 
 <style lang="scss">
     form {
@@ -42,7 +40,7 @@
         flex-direction: column;
         gap: 10px;
         margin: auto;
-        width: min(100vw, 350px);
+        width: min(100vw, 50rem);
 
         section {
             position: relative;

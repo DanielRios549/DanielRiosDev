@@ -1,11 +1,11 @@
-import { PUBLIC_API_URL, PUBLIC_API_KEY } from '$env/static/public'
+import { env } from '$env/dynamic/public'
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit'
 import type { Database } from '$/types/generated'
 
 export async function handle({ event, resolve }) {
     event.locals.supabase = createSupabaseServerClient<Database>({
-        supabaseUrl: PUBLIC_API_URL,
-        supabaseKey: PUBLIC_API_KEY,
+        supabaseUrl: env.PUBLIC_API_URL,
+        supabaseKey: env.PUBLIC_API_KEY,
         event,
         cookieOptions: {
             name: 'session',
