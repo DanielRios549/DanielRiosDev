@@ -19,7 +19,7 @@
 
 <section id="contact" class="wrapper">
     <h2>Contact</h2>
-    <Form action="/contact?/email" {initialValues} {validationSchema}>
+    <Form action="/contact" {initialValues} {validationSchema}>
         <Input type="text" name="name" label="Name"/>
         <Input type="text" name="email" label="Email"/>
         <Input type="text" name="subject" label="Subject"/>

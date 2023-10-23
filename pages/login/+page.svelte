@@ -16,11 +16,11 @@
 
 <template>
     {#if $page.data.session}
-        <Form action="/login?/logout" submitText="Logout">
+        <Form action="/logout" submitText="Logout">
             <legend>You are already logged in</legend>
         </Form>
     {:else}
-        <Form action="/login?/login" {initialValues} {validationSchema} submitText="Login">
+        <Form action="/login" {initialValues} {validationSchema} submitText="Login">
             <Input type="text" name="email" label="Email"/>
             <Input type="text" name="password" label="Password"/>
         </Form>

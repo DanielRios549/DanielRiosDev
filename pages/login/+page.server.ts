@@ -2,7 +2,7 @@ import { AuthApiError } from '@supabase/supabase-js'
 import { fail, redirect } from '@sveltejs/kit'
 
 export const actions = {
-    login: async ({ request, locals }) => {
+    default: async ({ request, locals }) => {
         const { email, password } = Object.fromEntries<string>(await request.formData() as any)
 
         const { error: e } = await locals.supabase.auth.signInWithPassword({
@@ -19,17 +19,6 @@ export const actions = {
 
             return fail(500, {
                 error: 'Server Error. Try again later.'
-            })
-        }
-
-        throw redirect(303, '/')
-    },
-    logout: async ({ locals }) => {
-        const { error: e } = await locals.supabase.auth.signOut()
-
-        if (e) {
-            return fail(500, {
-                error: 'Server Error. Cannot Log User Out'
             })
         }
 

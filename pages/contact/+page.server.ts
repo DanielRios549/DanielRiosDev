@@ -3,7 +3,7 @@ import { fail } from '@sveltejs/kit'
 import { env } from '$env/dynamic/private'
 
 export const actions = {
-    email: async ({ request }) => {
+    default: async ({ request }) => {
         const data = Object.fromEntries<string>(await request.formData() as any)
 
         const transporter = createTransport({
@@ -21,6 +21,7 @@ export const actions = {
             from: `Daniel Rios Contact <${env.MAIL}>`,
             to: data.email,
             subject: 'Form Contact to Daniel Rios',
+            replyTo: env.TRANSPORT_USER,
             html: /* html */ `
                 <p>Thank you for reaching out to me. I will respond as soon as possible.</p>
                 <p>Feel free to reach out me again at: ${env.TRANSPORT_USER}</p>
