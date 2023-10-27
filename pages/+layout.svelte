@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { invalidate } from '$app/navigation'
+    import { invalidate, onNavigate } from '$app/navigation'
     import { browser } from '$app/environment'
     // import { page } from '$app/stores'
     import { onMount } from 'svelte'
@@ -11,6 +11,21 @@
     export let data
 
     $: ({ auth, session } = data)
+
+    onNavigate((navigating) => {
+        // @ts-ignore
+        if (!document.startViewTransition) {
+            return undefined
+        }
+
+        return new Promise((resolve) => {
+            // @ts-ignore
+            document.startViewTransition(async () => {
+                resolve()
+                await navigating.complete
+            })
+        })
+    })
 
     onMount(() => {
         // TODO: Fix ready = true not working inside onMount
@@ -49,6 +64,13 @@
 <style lang="scss" global>
     @use "../styles/app";
 
+    :root {
+        view-transition-name: root;
+    }
+    ::view-transition-old,
+    ::view-transition-new {
+        animation-duration: 600ms;
+    }
     #app {
         --header-color: var(--text);
         $header: 60px;
