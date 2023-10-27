@@ -12,6 +12,7 @@
 html {
     background-color: var(--color1, hsl(216deg 7% 14%));
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
 }
 :--text {
     color: var(--text);

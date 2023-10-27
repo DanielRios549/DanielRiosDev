@@ -24,7 +24,7 @@
         <Input type="text" name="email" label="Email"/>
         <Input type="text" name="subject" label="Subject"/>
 
-        <Input type="textarea" name="message" label="Message"/>
+        <Input type="textarea" name="message" placeholder="Your Message"/>
     </Form>
 </section>
 
