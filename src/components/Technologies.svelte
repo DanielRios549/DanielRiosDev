@@ -8,6 +8,7 @@
     import Sass from '$/icons/sass.svg'
     import GraphQL from '$/icons/graphql.svg'
 
+    // TODO: Get Icons dynamically like in TechIcon Component
     const technologies: Record<string, [string, number, typeof Svelte | null][]> = {
         'Front End': [
             ['Svelte', 90, Svelte],

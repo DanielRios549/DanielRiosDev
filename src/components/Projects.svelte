@@ -2,7 +2,7 @@
     import { page } from '$app/stores'
     import Lock from '$/icons/lock.svg'
     import Link from '$/icons/link.svg'
-    import Plus from '$/icons/plus.svg'
+    import TechIcon from '$/components/TechIcon.svelte'
 
     $: images = $page.data.images
     $: projects = $page.data.projects
@@ -29,18 +29,9 @@
                 <div>
                     <div class="stack">
                         {#each techs as tech}
-                            <section>
-                                <header>
-                                    <h3>{tech}</h3>
-                                </header>
-                            </section>
+                            <TechIcon name={tech} icon={tech.toLowerCase().trim()}/>
                         {/each}
-                        <section>
-                            <header>
-                                <h3>Plus</h3>
-                            </header>
-                            <Plus/>
-                        </section>
+                        <TechIcon name="More" icon="plus"/>
                     </div>
                     <span class="repo">
                         {#if repo}
@@ -134,51 +125,6 @@
                         height: $height;
                         color: var(--text);
                         gap: 0;
-
-                        > section {
-                            @extend %center;
-
-                            border-radius: 50%;
-                            border: 0.2rem solid var(--color1);
-                            background-color: var(--color2);
-                            position: relative;
-                            height: 2.5rem;
-                            width: 2.5rem;
-                            cursor: pointer;
-
-                            @for $i from 1 through 10 {
-                                &:nth-child(#{$i + 1}) {
-                                    left: $i * -5%;
-                                }
-                            }
-                            &:hover > header {
-                                visibility: visible;
-                            }
-                            :--svg {
-                                --size: 1.5rem;
-                            }
-                            > header {
-                                position: absolute;
-                                display: block;
-                                visibility: hidden;
-                                border: 0.15rem solid var(--highlight);
-                                background-color: var(--color2);
-                                top: -3.5rem;
-                                left: -25%;
-                                padding: 0.5rem;
-
-                                &::after {
-                                    content: '';
-                                    position: absolute;
-                                    top: 2.2rem;
-                                    border: 1rem solid transparent;
-                                    border-top-color: var(--highlight);
-                                }
-                                :--heading {
-                                    font-size: 1rem;
-                                }
-                            }
-                        }
                     }
                     .repo {
                         color: var(--text);
@@ -243,7 +189,11 @@
                 width: 90vw;
                 height: min(calc(90vw / 1.75), 20rem);
             }
-            div {
+            .stack {
+                width: 20rem;
+                margin: 0 auto;
+            }
+            div:not(.stack) {
                 flex-direction: column;
 
                 .repo {
