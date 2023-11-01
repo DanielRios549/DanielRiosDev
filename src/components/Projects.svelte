@@ -2,6 +2,7 @@
     import { page } from '$app/stores'
     import Lock from '$/icons/lock.svg'
     import Link from '$/icons/link.svg'
+    import Plus from '$/icons/plus.svg'
 
     $: images = $page.data.images
     $: projects = $page.data.projects
@@ -14,16 +15,33 @@
     <div class="content">
         {#each projects as {name, stack, repo, link, image}}
             {@const imageLink = image ? `${images}/projects/${image}` : '/images/project.jpg'}
+            {@const techs = stack.replace(' ', '').split(',')}
             <article>
                 <header>
                     <h3>{name}</h3>
                 </header>
-                <figure>
-                    <figcaption>{name}</figcaption>
-                    <img src={imageLink} alt="{name} Image">
-                </figure>
+                <a href="/{name.replaceAll(' ', '-').toLowerCase()}" class="project-link">
+                    <figure>
+                        <figcaption>{name}</figcaption>
+                        <img src={imageLink} alt="{name} Image">
+                    </figure>
+                </a>
                 <div>
-                    <span class="stack">{stack}</span>
+                    <div class="stack">
+                        {#each techs as tech}
+                            <section>
+                                <header>
+                                    <h3>{tech}</h3>
+                                </header>
+                            </section>
+                        {/each}
+                        <section>
+                            <header>
+                                <h3>Plus</h3>
+                            </header>
+                            <Plus/>
+                        </section>
+                    </div>
                     <span class="repo">
                         {#if repo}
                             <a href={repo} target="_blank" rel="noreferrer">
@@ -64,16 +82,24 @@
             gap: $gap;
             margin: 0 auto;
 
-            :is(figcaption, article header)  {
+            :is(figcaption, article header) {
                 display: none;
             }
-            figure {
-                background-color: var(--text);
+            a {
+                transition: opacity 200ms ease;
 
-                img {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 100%;
+                &.project-link:hover {
+                    opacity: 0.6;
+                }
+                figure {
+                    view-transition-name: project-image;
+
+                    &:not(:has(img)) {
+                        background-color: var(--color1);
+                    }
+                    img {
+                        @extend %imageCover;
+                    }
                 }
             }
             article {
@@ -107,6 +133,52 @@
 
                         height: $height;
                         color: var(--text);
+                        gap: 0;
+
+                        > section {
+                            @extend %center;
+
+                            border-radius: 50%;
+                            border: 0.2rem solid var(--color1);
+                            background-color: var(--color2);
+                            position: relative;
+                            height: 2.5rem;
+                            width: 2.5rem;
+                            cursor: pointer;
+
+                            @for $i from 1 through 10 {
+                                &:nth-child(#{$i + 1}) {
+                                    left: $i * -5%;
+                                }
+                            }
+                            &:hover > header {
+                                visibility: visible;
+                            }
+                            :--svg {
+                                --size: 1.5rem;
+                            }
+                            > header {
+                                position: absolute;
+                                display: block;
+                                visibility: hidden;
+                                border: 0.15rem solid var(--highlight);
+                                background-color: var(--color2);
+                                top: -3.5rem;
+                                left: -25%;
+                                padding: 0.5rem;
+
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    top: 2.2rem;
+                                    border: 1rem solid transparent;
+                                    border-top-color: var(--highlight);
+                                }
+                                :--heading {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
                     }
                     .repo {
                         color: var(--text);
