@@ -125,6 +125,18 @@
                         height: $height;
                         color: var(--text);
                         gap: 0;
+
+                        > :global {
+                            *:not(:first-child) {
+                                margin-left: -0.8rem;
+                            }
+                            *:nth-child(n+4) {
+                                display: none;
+                            }
+                            *:last-child {
+                                display: flex;
+                            }
+                        }
                     }
                     .repo {
                         color: var(--text);

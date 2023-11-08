@@ -30,11 +30,6 @@
         width: 2.5rem;
         cursor: pointer;
 
-        @for $i from 1 through 10 {
-            &:nth-child(#{$i + 1}) {
-                left: $i * -5%;
-            }
-        }
         &:hover > header {
             visibility: visible;
         }
