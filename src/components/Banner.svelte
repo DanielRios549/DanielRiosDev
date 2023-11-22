@@ -24,12 +24,20 @@
     <span>
         <Text item={$page.data.texts.about}/>
     </span>
-    {#each icons as [top, left, icon]}
-        <svelte:component class="colorized" this={icon} style="--top:{top}%;--left:{left}%;"/>
+    {#each icons as [top, left, icon], index}
+        <svelte:component class="colorized" this={icon} style="--top:{top}%;--left:{left}%;--delay:{index}s"/>
     {/each}
 </section>
 
 <style lang="scss">
+    @keyframes icon-move {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(var(--left), calc(var(--left) - var(--top)));
+        }
+    }
     section {
         position: relative;
         height: 500px;
@@ -58,6 +66,7 @@
             position: absolute;
             top: var(--top);
             left: calc(45% + var(--left));
+            animation: icon-move 10s ease var(--delay) infinite alternate;
         }
     }
     @media (--large) {
