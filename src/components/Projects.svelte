@@ -31,7 +31,9 @@
                         {#each techs as tech}
                             <TechIcon name={tech} icon={tech.toLowerCase().trim()}/>
                         {/each}
-                        <TechIcon name="More" icon="plus"/>
+                        {#if techs.length > 4}
+                            <TechIcon name="More" icon="plus"/>
+                        {/if}
                     </div>
                     <span class="repo">
                         {#if repo}
