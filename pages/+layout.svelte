@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { env } from '$env/dynamic/public'
     import { invalidate, onNavigate } from '$app/navigation'
     import { browser } from '$app/environment'
     // import { page } from '$app/stores'
@@ -57,8 +56,8 @@
     <Header/>
     <Menu/>
     <main>
-        {#if env.PUBLIC_MAINTENANCE}
-            <dialog open>This project still in maintenance.</dialog>
+        {#if data.texts.warning}
+            <dialog open>{data.texts.warning.content}</dialog>
         {/if}
         <slot/>
     </main>
