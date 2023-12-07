@@ -7,6 +7,7 @@
     import { theme } from '$/stores'
     import Header from '$/components/Header.svelte'
     import Menu from '$/components/Menu.svelte'
+    import Chat from '$/components/Chat.svelte'
 
     export let data
 
@@ -60,11 +61,13 @@
             <dialog open>{data.texts.warning.content}</dialog>
         {/if}
         <slot/>
+        <Chat/>
     </main>
 </template>
 
 <style lang="scss" global>
-    @use "../styles/app";
+    /* stylelint-disable import-notation */
+    @import "../styles/app";
 
     :root {
         view-transition-name: root;
@@ -74,7 +77,6 @@
         animation-duration: 600ms;
     }
     #app {
-        --header-color: var(--text);
         $header: 60px;
         $vh: var(--vh, 100vh);
 
