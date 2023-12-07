@@ -2,8 +2,10 @@ import { env } from '$env/dynamic/public'
 import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit'
 import { dev } from '$app/environment'
 import { inject } from '@vercel/analytics'
+import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit'
 import type { Database } from '$/types/generated'
 
+injectSpeedInsights()
 inject({ mode: dev ? 'development' : 'production' })
 
 export async function load({ fetch, data, depends }) {
