@@ -7,7 +7,6 @@
     import { theme } from '$/stores'
     import Header from '$/components/Header.svelte'
     import Menu from '$/components/Menu.svelte'
-    import Chat from '$/components/Chat.svelte'
 
     export let data
 
@@ -61,7 +60,6 @@
             <dialog open>{data.texts.warning.content}</dialog>
         {/if}
         <slot/>
-        <Chat/>
     </main>
 </template>
 

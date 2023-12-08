@@ -5,8 +5,8 @@
     import Input from '$/components/forms/Input.svelte'
 
     const initialValues = {
-        email: '',
-        password: ''
+        email: 'me@danielrios.dev',
+        password: 'cftwy'
     }
     const validationSchema = {
         email: yup.string().email('Type a valid Email, please').required('Email is Required'),
@@ -22,7 +22,7 @@
     {:else}
         <Form action="/login" {initialValues} {validationSchema} submitText="Login">
             <Input type="text" name="email" label="Email"/>
-            <Input type="text" name="password" label="Password"/>
+            <Input type="password" name="password" label="Password"/>
         </Form>
     {/if}
 </template>
