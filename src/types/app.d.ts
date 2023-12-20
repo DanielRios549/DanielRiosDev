@@ -4,6 +4,7 @@
 // See https://kit.svelte.dev/docs/typescript
 // for information about these interfaces
 import { SupabaseClient, Session } from '@supabase/supabase-js'
+import { PrismaClient } from '@prisma/client'
 import type { Database } from '$/types/generated'
 import type { LayoutServerData } from '.svelte-kit/types/pages/$types'
 
@@ -11,6 +12,7 @@ declare global {
     namespace App {
         interface Locals {
             supabase: SupabaseClient<Database>
+            prisma: PrismaClient
             getSession(): Promise<Session | null>
         }
 

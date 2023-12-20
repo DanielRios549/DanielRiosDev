@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+    // Do not change output for a folder outside node_modules, Vite fails to import.
+    // See: https://github.com/prisma/prisma/discussions/20200#discussioncomment-7441241
+    // output   = "./client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
+}
+
+model PortfolioOption {
+    id Int @id @default(autoincrement())
+    option String // Underscore-separated values
+    value String
+    created_at DateTime @default(now())
+
+    @@map("portfolio_options")
+}
+
+model PortfolioText {
+    id Int @id @default(autoincrement())
+    type String
+    content String
+    html Boolean @default(false)
+    created_at DateTime @default(now())
+
+    @@map("portfolio_texts")
+}
+
+model Project {
+    id Int @id @default(autoincrement())
+    name String
+    stack String // Comma-separated values
+    repo String?
+    link String?
+    image String?
+    created_at DateTime @default(now())
+
+    @@map("projects")
+}
+
+model User {
+    id Int @id @default(autoincrement())
+    name String
+    username String
+    image String?
+
+    @@map("users")
+}

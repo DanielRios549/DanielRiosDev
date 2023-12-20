@@ -9,6 +9,10 @@
             "DOM",
             "DOM.Iterable"
         ],
+        "types": [
+            "vite/client",
+            "svelte",
+        ],
         "checkJs": true,
         "esModuleInterop": true,
         "importsNotUsedAsValues": "error",
@@ -28,12 +32,14 @@
         "paths": {
             "$lib":["src/lib"],
             "$lib/*":["src/lib/*"],
-            "$/*": ["src/*"]
+            "$/*": ["src/*"],
+            "$prisma/*": ["prisma/*"]
         }
     },
     "include": [
 		".svelte-kit/ambient.d.ts",
 		".svelte-kit/types/**/$types.d.ts",
+        "prisma/**/*.ts",
         "pages/**/*.svelte",
         "pages/**/*.ts",
         "pages/**/*.server.ts",

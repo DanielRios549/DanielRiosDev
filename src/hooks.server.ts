@@ -1,4 +1,5 @@
 import { env } from '$env/dynamic/public'
+import { prisma } from '$prisma/client'
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit'
 import type { Database } from '$/types/generated'
 
@@ -12,6 +13,8 @@ export async function handle({ event, resolve }) {
             secure: !import.meta.env.DEV
         }
     })
+
+    event.locals.prisma = prisma
 
     /**
      * a little helper that is written for convenience so that instead
