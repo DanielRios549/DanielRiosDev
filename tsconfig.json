@@ -9,6 +9,10 @@
             "DOM",
             "DOM.Iterable"
         ],
+        "types": [
+            "vite/client",
+            "svelte",
+        ],
         "checkJs": true,
         "esModuleInterop": true,
         "importsNotUsedAsValues": "error",

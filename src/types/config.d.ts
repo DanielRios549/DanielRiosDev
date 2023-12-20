@@ -13,4 +13,4 @@ export type Text = {
     content: string
 }
 
-export type Texts = Record<'header' | 'about' | 'resume', Text>
+export type Texts = Record<'header' | 'about' | 'resume' | 'warning', Text>
