@@ -7,16 +7,55 @@
     const themes: Theme[] = ['light', 'dark']
     const icons = [Dark, Light]
 
+    // TODO: Fix current icon always Sun (SSR)
     $: current = themes.findIndex((search) => search === $theme)
     $: icon = icons[current]
 
-    const changeTheme = () => {
+    const setTheme = () => {
         if (current + 1 < themes.length) {
             $theme = themes[current + 1]
         }
         else {
             $theme = themes[0]
         }
+    }
+
+    // TODO: Fix transition not working (invalid state)
+    const changeTheme = (event: any) => {
+        // @ts-ignore
+        if (!document.startViewTransition) {
+            setTheme()
+            return
+        }
+
+        const left = event?.clientX ?? innerWidth / 2
+        const top = event?.clientY ?? innerHeight / 2
+
+        const radius = Math.hypot(
+            Math.max(left, innerWidth - left),
+            Math.max(top, innerHeight - top)
+        )
+
+        // @ts-ignore
+        const transition = document.startViewTransition(() => {
+            setTheme()
+        })
+
+        transition.ready.then(() => {
+            document.documentElement.animate(
+                {
+                    clipPath: [
+                        `circle(0 at ${left}px ${top}px)`,
+                        `circle(${radius}px at ${left}px ${top}px)`
+                    ]
+                },
+                {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    pseudoElement: '::view-transition-new(root)'
+                }
+            )
+        })
     }
 </script>
 
@@ -33,14 +72,14 @@
         width: $size;
         height: $size;
 
-        :global {
-            svg path {
-                fill: var(--header-color, var(--icon)) !important;
+        :global(:--svg) {
+            --fill: var(--icon);
+        }
+    }
 
-                @media (--mobile) {
-                    fill: var(--icon) !important;
-                }
-            }
+    @media (--mobile) {
+        button :global(:--svg) {
+            --fill: var(--icon);
         }
     }
 </style>
