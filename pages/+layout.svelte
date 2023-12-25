@@ -3,7 +3,6 @@
     import { browser } from '$app/environment'
     // import { page } from '$app/stores'
     import { onMount } from 'svelte'
-    // import { wait } from '$/lib'
     import { theme } from '$/stores'
     import Header from '$/components/Header.svelte'
     import Menu from '$/components/Menu.svelte'
@@ -28,25 +27,22 @@
     })
 
     onMount(() => {
-        // TODO: Fix ready = true not working inside onMount
-        // await wait(100)
-
-        // ready = true
         const { data } = auth.onAuthStateChange((_event, _session) => {
             if (_session?.expires_at !== session?.expires_at) {
                 invalidate('supabase:auth')
             }
         })
-
         return () => data.subscription.unsubscribe()
     })
 
-    // $: ready = import.meta.env.DEV
     $: vh = 0
 
     $: if (browser) {
         document.body.style.setProperty('--vh', `${vh}px`)
         document.body.id = $theme
+
+        // TODO: Theme is being saved in both Cookie and LocalStorage due to SSR flash. Fix it.
+        document.cookie = `theme=${$theme};max-age=360*360*360;`
     }
 </script>
 
@@ -70,9 +66,10 @@
     :root {
         view-transition-name: root;
     }
-    ::view-transition-old,
-    ::view-transition-new {
-        animation-duration: 600ms;
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+        mix-blend-mode: normal;
     }
     #app {
         $header: 60px;

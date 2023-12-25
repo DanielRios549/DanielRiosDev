@@ -27,6 +27,10 @@ export async function handle({ event, resolve }) {
     return resolve(event, {
         filterSerializedResponseHeaders(name) {
             return name === 'content-range'
+        },
+        transformPageChunk({ html }) {
+            const theme = event.cookies.get('theme')
+            return html.replace('<body', `<body id="${theme}"`)
         }
     })
 }
