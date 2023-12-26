@@ -1,6 +1,8 @@
 <script lang="ts">
     import { page } from '$app/stores'
+    import { afterNavigate, beforeNavigate } from '$app/navigation'
     import { projectName } from '$/lib'
+    import { setupTransitions } from '$/components/Projects.svelte'
     import TechIcon from '$/components/TechIcon.svelte'
 
     export let data
@@ -10,12 +12,20 @@
     $: project = data.projects.find((project) => {
         return project.name?.toLowerCase() === projectName(link)
     })
+
+    beforeNavigate(() => {
+        setupTransitions('project', 'div.slider > figure:first-child', 'div.stack', link)
+    })
+
+    afterNavigate(() => {
+        setupTransitions('project', 'div.slider > figure:first-child', 'div.stack', link)
+    })
 </script>
 
-<section class="wrapper" style="view-transition-name: project-image-{link};">
+<section id="project-{link}" class="wrapper">
     <header>
         <h1>{project?.name}</h1>
-        <div>
+        <div class="stack">
             {#each project?.stack.replace(' ', '').split(',') as tech}
                 <TechIcon name={tech} icon={tech.toLowerCase().trim()}/>
             {/each}

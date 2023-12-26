@@ -1,12 +1,54 @@
+<script lang="ts" context="module">
+    // This function fixes ThemeSwitcher running all animations and get slowly.
+    // TODO: Try to fix ThemeSwitcher without removing View Transition Names (avoid using this function).
+    export const setupTransitions = async (prefix: string, imageTag?: string, stackTag?: string, name?: string) => {
+        if (name) {
+            const project = document.getElementById(`${prefix}-${name}`)
+            const image = project?.querySelector(imageTag || 'figure') as HTMLElement
+            const stack = project?.querySelector(stackTag || 'div.stack') as HTMLElement
+
+            console.log(`${prefix}-${name}`)
+
+            // @ts-ignore
+            if (document.startViewTransition) {
+                if (image) {
+                    image.style.viewTransitionName = `${prefix}-${name}-image`
+                }
+                if (stack) {
+                    stack.style.viewTransitionName = `${prefix}-${name}-stack`
+                }
+
+                await wait(500)
+
+                if (image) {
+                    image.style.viewTransitionName = ''
+                }
+                if (stack) {
+                    stack.style.viewTransitionName = ''
+                }
+            }
+        }
+    }
+</script>
+
 <script lang="ts">
+    import { afterNavigate, beforeNavigate } from '$app/navigation'
     import { page } from '$app/stores'
-    import { projectUri } from '$lib'
+    import { projectUri, wait } from '$lib'
     import Lock from '$/icons/lock.svg'
     import Link from '$/icons/link.svg'
     import TechIcon from '$/components/TechIcon.svelte'
 
     $: images = $page.data.images
     $: projects = $page.data.projects
+
+    beforeNavigate(({ to }) => {
+        setupTransitions('project', 'figure', 'div.stack', to?.params?.project)
+    })
+
+    afterNavigate(({ from }) => {
+        setupTransitions('project', 'figure', 'div.stack', from?.params?.project)
+    })
 </script>
 
 <section id="projects" class="wrapper">
@@ -18,12 +60,12 @@
             {@const uri = projectUri(name)}
             {@const imageLink = image ? `${images}/projects/${image}` : '/images/project.jpg'}
             {@const techs = stack.replace(' ', '').split(',')}
-            <article>
+            <article id="project-{uri}">
                 <header>
                     <h3>{name}</h3>
                 </header>
                 <a href="/{uri}" class="project-link">
-                    <figure style="view-transition-name: project-image-{uri}">
+                    <figure>
                         <figcaption>{name}</figcaption>
                         <img src={imageLink} alt="{name} Image">
                     </figure>
