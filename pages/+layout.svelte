@@ -16,13 +16,15 @@
             return undefined
         }
 
-        return new Promise((resolve) => {
-            // @ts-ignore
-            document.startViewTransition(async () => {
-                resolve()
-                await navigating.complete
+        if (navigating.from?.route.id !== navigating.to?.route.id) {
+            return new Promise((resolve) => {
+                // @ts-ignore
+                document.startViewTransition(async () => {
+                    resolve()
+                    await navigating.complete
+                })
             })
-        })
+        }
     })
 
     onMount(() => {
