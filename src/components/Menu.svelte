@@ -37,9 +37,6 @@
 </script>
 
 <div class:open={$menuStatus} class="wrapper">
-    {#if import.meta.env.DEV}
-        <ThemeSwitcher/>
-    {/if}
     <nav>
         <ul>
             {#each links as [link, name]}
@@ -61,6 +58,7 @@
             </li>
         {/each}
     </menu>
+    <ThemeSwitcher/>
     {#if $page.data.session}
         <span>{$page.data.info?.name || $page.data.session.user.email}</span>
     {/if}
@@ -117,7 +115,7 @@
         }
     }
     @media (--large) {
-        $color: var(--header-color, var(--text));
+        $color: var(--text);
 
         .wrapper {
             grid-area: header;
@@ -140,10 +138,6 @@
                         height: 100%;
                         gap: 1rem;
                         padding: 0 1rem;
-
-                        :--svg {
-                            --fill: var(--header-color) !important;
-                        }
                     }
                 }
             }

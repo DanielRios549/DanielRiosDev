@@ -85,7 +85,8 @@
                     opacity: 0.6;
                 }
                 figure {
-                    view-transition-name: project-image;
+                    // TODO: The line bellow stops every view-transition animation in homepage. Why?
+                    // view-transition-name: project-image;
 
                     &:not(:has(img)) {
                         background-color: var(--color1);

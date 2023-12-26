@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { browser } from '$app/environment'
     import { theme } from '$/stores'
     import Dark from '$/icons/dark.svg'
     import Light from '$/icons/light.svg'
@@ -11,6 +12,13 @@
     $: current = themes.findIndex((search) => search === $theme)
     $: icon = icons[current]
 
+    $: if (browser) {
+        document.body.id = $theme
+
+        // TODO: Theme is being saved in both Cookie and LocalStorage due to SSR flash. Fix it.
+        document.cookie = `theme=${$theme};max-age=360*360*360;`
+    }
+
     const setTheme = () => {
         if (current + 1 < themes.length) {
             $theme = themes[current + 1]
@@ -20,7 +28,6 @@
         }
     }
 
-    // TODO: Fix transition not working (invalid state)
     const changeTheme = (event: any) => {
         // @ts-ignore
         if (!document.startViewTransition) {

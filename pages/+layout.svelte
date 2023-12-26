@@ -3,7 +3,6 @@
     import { browser } from '$app/environment'
     // import { page } from '$app/stores'
     import { onMount } from 'svelte'
-    import { theme } from '$/stores'
     import Header from '$/components/Header.svelte'
     import Menu from '$/components/Menu.svelte'
 
@@ -39,10 +38,6 @@
 
     $: if (browser) {
         document.body.style.setProperty('--vh', `${vh}px`)
-        document.body.id = $theme
-
-        // TODO: Theme is being saved in both Cookie and LocalStorage due to SSR flash. Fix it.
-        document.cookie = `theme=${$theme};max-age=360*360*360;`
     }
 </script>
 
