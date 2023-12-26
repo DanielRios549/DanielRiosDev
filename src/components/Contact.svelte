@@ -3,6 +3,7 @@
     import Form from '$/components/Form.svelte'
     import Input from '$/components/forms/Input.svelte'
 
+    // TODO: Add tests to verify if initialValues are empty
     const initialValues = {
         name: '',
         email: '',

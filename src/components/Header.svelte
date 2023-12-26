@@ -38,7 +38,7 @@
         h1 {
             padding-left: 15px;
             font-size: clamp(1.2rem, 6vw, 2rem);
-            color: var(--header-color, var(--text));
+            color: var(--text);
         }
         button {
             @extend %center;
@@ -91,7 +91,7 @@
                 hr {
                     position: relative;
                     border-radius: 10px;
-                    background-color: var(--header-color, var(--white));
+                    background-color: var(--text, var(--white));
                     display: block;
                     height: 3px;
                     transition: transform 200ms ease;

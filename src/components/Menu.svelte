@@ -12,11 +12,11 @@
             'Home'
         ],
         [
-            '/#projects',
+            '/projects',
             'Projects'
         ],
         [
-            '/#contact',
+            '/contact',
             'Contact'
         ]
     ]
@@ -33,6 +33,10 @@
         ]
     ]
 
+    const navClick = () => {
+        $menuStatus = false
+    }
+
     $: current = $page.url.pathname
 </script>
 
@@ -41,7 +45,7 @@
         <ul>
             {#each links as [link, name]}
                 <li class:active={current === link}>
-                    <a data-sveltekit-replacestate={link.includes('#') || null} on:click={() => ($menuStatus = false)} href={link}>
+                    <a on:click={navClick} href={link}>
                         {name}
                     </a>
                 </li>

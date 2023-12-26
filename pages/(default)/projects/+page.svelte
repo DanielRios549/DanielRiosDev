@@ -10,23 +10,16 @@
     <meta name="description" content={description} />
 </svelte:head>
 
-<section>
-    <header>
-        <h3>Projects</h3>
-    </header>
+<div>
     <Projects/>
-</section>
+</div>
 
 <style lang="scss">
-    section {
+    div {
         @extend %centerLayout;
 
         display: flex;
         flex-direction: column;
         gap: 2rem;
-
-        header h3 {
-            font-size: 2rem;
-        }
     }
 </style>

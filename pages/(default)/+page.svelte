@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { env } from '$env/dynamic/public'
     import { page } from '$app/stores'
     import Banner from '$/components/Banner.svelte'
     import Technologies from '$/components/Technologies.svelte'
@@ -18,7 +17,5 @@
     <Banner/>
     <Technologies/>
     <Projects/>
-    {#if env.PUBLIC_SHOWFORM}
-        <Contact/>
-    {/if}
+    <Contact/>
 </template>

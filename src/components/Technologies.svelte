@@ -108,7 +108,7 @@
                             width: 75%;
 
                             &::-webkit-progress-bar {
-                                background-color: var(--white);
+                                background-color: var(--color3);
                             }
                             &::-webkit-progress-value {
                                 background-color: var(--highlight);

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores'
+    import { projectUri } from '$lib'
     import Lock from '$/icons/lock.svg'
     import Link from '$/icons/link.svg'
     import TechIcon from '$/components/TechIcon.svelte'
@@ -14,14 +15,15 @@
     </header>
     <div class="content">
         {#each projects as {name, stack, repo, link, image}}
+            {@const uri = projectUri(name)}
             {@const imageLink = image ? `${images}/projects/${image}` : '/images/project.jpg'}
             {@const techs = stack.replace(' ', '').split(',')}
             <article>
                 <header>
                     <h3>{name}</h3>
                 </header>
-                <a href="/{name.replaceAll(' ', '-').toLowerCase()}" class="project-link">
-                    <figure>
+                <a href="/{uri}" class="project-link">
+                    <figure style="view-transition-name: project-image-{uri}">
                         <figcaption>{name}</figcaption>
                         <img src={imageLink} alt="{name} Image">
                     </figure>
@@ -85,9 +87,6 @@
                     opacity: 0.6;
                 }
                 figure {
-                    // TODO: The line bellow stops every view-transition animation in homepage. Why?
-                    // view-transition-name: project-image;
-
                     &:not(:has(img)) {
                         background-color: var(--color1);
                     }
