@@ -12,6 +12,8 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "vitest __tests__/*.test.ts",
+    "test:ui": "vitest --ui __tests__/*.test.ts",
     "lint": "eslint ."
   },
   "trustedDependencies": [
@@ -27,10 +29,12 @@
     "@supabase/auth-helpers-sveltekit": "^0.10.1",
     "@sveltejs/adapter-vercel": "^3.0.1",
     "@sveltejs/kit": "^1.22.3",
+    "@testing-library/svelte": "^4.0.5",
     "@types/node": "^18.7.14",
     "@types/nodemailer": "^6.4.11",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.41.0",
+    "@vitest/ui": "^1.1.0",
     "autoprefixer": "^10.4.12",
     "dotenv": "^16.0.3",
     "eslint": "8.23.0",
@@ -39,6 +43,7 @@
     "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-svelte3": "^4.0.0",
+    "jsdom": "^23.0.1",
     "nodemailer": "^6.9.6",
     "postcss": "^8.4.18",
     "postcss-custom-media": "^8.0.2",
@@ -63,6 +68,8 @@
     "svgo": "^3.0.2",
     "typescript": "^4.8.2",
     "vite": "^4.1.4",
+    "vitest": "^1.1.0",
+    "vitest-dom": "^0.1.1",
     "yup": "^1.2.0"
   }
 }

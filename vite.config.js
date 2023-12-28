@@ -1,9 +1,15 @@
+/// <reference types="vitest" />
+
 import { sveltekit } from '@sveltejs/kit/vite'
 import { defineConfig } from 'vite'
 import svg from '@poppanator/sveltekit-svg'
 import { resolve } from 'path'
 
 const config = defineConfig({
+    test: {
+        environment: 'jsdom',
+        globals: true
+    },
     plugins: [
         svg({
             svgoOptions: {
@@ -24,7 +30,8 @@ const config = defineConfig({
     },
     resolve: {
         alias: {
-            $: resolve('./src')
+            $: resolve('./src'),
+            $pages: resolve('./pages')
         }
     }
 })

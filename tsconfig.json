@@ -10,6 +10,7 @@
             "DOM.Iterable"
         ],
         "types": [
+            "vitest/globals",
             "vite/client",
             "svelte",
         ],
@@ -32,12 +33,14 @@
         "paths": {
             "$lib":["src/lib"],
             "$lib/*":["src/lib/*"],
+            "$pages/*":["pages/*"],
             "$/*": ["src/*"]
         }
     },
     "include": [
 		".svelte-kit/ambient.d.ts",
 		".svelte-kit/types/**/$types.d.ts",
+        "__tests__/**/*.test.ts",
         "pages/**/*.svelte",
         "pages/**/*.ts",
         "pages/**/*.server.ts",
