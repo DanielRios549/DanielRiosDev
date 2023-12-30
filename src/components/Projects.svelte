@@ -7,8 +7,6 @@
             const image = project?.querySelector(imageTag || 'figure') as HTMLElement
             const stack = project?.querySelector(stackTag || 'div.stack') as HTMLElement
 
-            console.log(`${prefix}-${name}`)
-
             // @ts-ignore
             if (document.startViewTransition) {
                 if (image) {

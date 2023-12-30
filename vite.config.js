@@ -7,6 +7,7 @@ import { resolve } from 'path'
 
 const config = defineConfig({
     test: {
+        setupFiles: ['./__tests__/setup.ts'],
         environment: 'jsdom',
         globals: true
     },

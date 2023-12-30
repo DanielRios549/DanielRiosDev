@@ -33,6 +33,7 @@
         }
     ],
     "rules": {
+        "no-console": "error",
         "indent": [
             "warn",
             4,
@@ -51,6 +52,7 @@
         "no-labels": "off"
     },
     "ignorePatterns": [
-        "build/*"
+        "build/*",
+        "src/types/generated.d.ts"
     ]
 }

@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "test": "vitest __tests__/*.test.ts",
+    "test": "vitest dev __tests__/*.test.ts",
+    "test:once": "vitest run __tests__/*.test.ts",
     "test:ui": "vitest --ui __tests__/*.test.ts",
     "lint": "eslint ."
   },
@@ -29,6 +30,7 @@
     "@supabase/auth-helpers-sveltekit": "^0.10.1",
     "@sveltejs/adapter-vercel": "^3.0.1",
     "@sveltejs/kit": "^1.22.3",
+    "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/svelte": "^4.0.5",
     "@types/node": "^18.7.14",
     "@types/nodemailer": "^6.4.11",
@@ -69,7 +71,6 @@
     "typescript": "^4.8.2",
     "vite": "^4.1.4",
     "vitest": "^1.1.0",
-    "vitest-dom": "^0.1.1",
     "yup": "^1.2.0"
   }
 }
