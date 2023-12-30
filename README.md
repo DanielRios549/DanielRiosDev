@@ -17,27 +17,32 @@ curl -fsSL https://bun.sh/install | bash
 bun install
 ```
 
+### To Pepare Husky
+```bash
+bun run prepare
+```
+
 ### To start the Supabase Environment
 ```bash
-bun start
+bun run start
 ```
 
 ### To stop the Supabase Environment
 ```bash
-bun stop
+bun runstop
 ```
 
 ### To generate Supabase Typings
 ```bash
-bun types
+bun run types
 ```
 
 ### To run the dev server
 ```bash
-bun dev
+bun run dev
 ```
 
 ### To build for production
 ```bash
-bun build
+bun run build
 ```
