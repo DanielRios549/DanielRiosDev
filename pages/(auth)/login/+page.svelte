@@ -4,7 +4,6 @@
     import Form from '$/components/Form.svelte'
     import Input from '$/components/forms/Input.svelte'
 
-    // TODO: Add tests to verify if initialValues are empty
     const initialValues = {
         email: '',
         password: ''
@@ -16,7 +15,7 @@
 </script>
 
 <template>
-    {#if $page.data.session}
+    {#if $page.data?.session}
         <Form action="/logout" submitText="Logout">
             <legend>You are already logged in</legend>
         </Form>
