@@ -8,6 +8,9 @@ import type { Database } from '$/types/generated'
 import type { LayoutServerData } from '.svelte-kit/types/pages/$types'
 
 declare global {
+    interface CSSStyleDeclaration {
+        viewTransitionName?: string
+    }
     namespace App {
         interface Locals {
             supabase: SupabaseClient<Database>
