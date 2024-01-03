@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { z } from 'zod'
+    import { contact } from '$lib/validations'
     import Form from '$/components/Form.svelte'
     import Input from '$/components/forms/Input.svelte'
 
@@ -9,17 +9,11 @@
         subject: '',
         message: ''
     }
-    const validationSchema = z.object({
-        name: z.string().min(1, 'Name is required'),
-        email: z.string().min(1, 'Email is required').email('Type a valid Email, please'),
-        subject: z.string().min(1, 'Subject is required'),
-        message: z.string().min(1, 'Message is required')
-    })
 </script>
 
 <section id="contact" class="wrapper">
     <h2>Contact</h2>
-    <Form action="/contact" {initialValues} {validationSchema}>
+    <Form action="/contact" {initialValues} validationSchema={contact}>
         <Input type="text" name="name" label="Name"/>
         <Input type="text" name="email" label="Email"/>
         <Input type="text" name="subject" label="Subject"/>

@@ -1,9 +1,18 @@
 import { createTransport } from 'nodemailer'
+import { fail } from '@sveltejs/kit'
 import { env } from '$env/dynamic/private'
+import { contact } from '$/lib/validations'
 
 export const actions = {
     default: async ({ request }) => {
         const data = Object.fromEntries<string>(await request.formData() as any)
+        const verify = contact.safeParse(data)
+
+        if (!verify.success) {
+            return fail(500, {
+                error: 'The provided data is incorrect'
+            })
+        }
 
         const transporter = createTransport({
             host: env.TRANSPORT_HOST,
@@ -19,7 +28,6 @@ export const actions = {
         await new Promise((resolve, reject) => {
             transporter.verify((err, success) => {
                 if (err) {
-                    console.log(err)
                     reject(err)
                 }
                 else {
@@ -46,7 +54,6 @@ export const actions = {
             }
             transporter.sendMail(confirmation, (err, info) => {
                 if (err) {
-                    console.log(err)
                     reject(err)
                 }
                 else {
@@ -70,7 +77,6 @@ export const actions = {
             }
             transporter.sendMail(contact, (err, info) => {
                 if (err) {
-                    console.log(err)
                     reject(err)
                 }
                 else {

@@ -1,13 +1,21 @@
 import { AuthApiError } from '@supabase/supabase-js'
 import { fail, redirect } from '@sveltejs/kit'
+import { login } from '$/lib/validations'
 
 export const actions = {
     default: async ({ request, locals }) => {
-        const { email, password } = Object.fromEntries<string>(await request.formData() as any)
+        const data = Object.fromEntries<string>(await request.formData() as any)
+        const verify = login.safeParse(data)
+
+        if (!verify.success) {
+            return fail(500, {
+                error: 'The provided data is incorrect'
+            })
+        }
 
         const { error: e } = await locals.supabase.auth.signInWithPassword({
-            email,
-            password
+            email: data.email,
+            password: data.password
         })
 
         if (e) {
