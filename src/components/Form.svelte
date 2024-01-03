@@ -1,35 +1,33 @@
 <script lang="ts">
-    import * as yup from 'yup'
+    import { z } from 'zod'
+    import { validator } from '@felte/validator-zod'
+    import { createForm } from 'felte'
     import { enhance } from '$app/forms'
     import { page } from '$app/stores'
-    import { createForm } from 'svelte-forms-lib'
     import { setFormContext } from '$/lib/contexts'
 
     export let action: string
-    export let submit: ((values: Record<string, string>) => any) | null = null
     export let submitText: string = 'Submit'
     export let initialValues: Record<string, any> = {}
-    export let validationSchema: yup.ObjectShape = {}
+    export let validationSchema: z.ZodObject<any> = z.object({})
 
-    const form = createForm({
+    const config = createForm({
         initialValues,
-        validationSchema: yup.object().shape(validationSchema),
-        onSubmit: (values) => {
-            submit && submit(values)
-        }
+        extend: validator({
+            schema: validationSchema
+        })
     })
 
-    setFormContext(form)
-
+    setFormContext(config)
 </script>
 
-<form {action} method="POST" on:submit|preventDefault={form.handleSubmit} use:enhance>
+<form {action} method="POST" use:config.form use:enhance>
+    <slot/>
     {#if $page.form?.error}
         <section class="error">
             <span>{$page.form?.error}</span>
         </section>
     {/if}
-    <slot/>
     <button type="submit">{submitText}</button>
 </form>
 

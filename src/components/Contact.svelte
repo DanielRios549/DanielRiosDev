@@ -1,5 +1,5 @@
 <script lang="ts">
-    import * as yup from 'yup'
+    import { z } from 'zod'
     import Form from '$/components/Form.svelte'
     import Input from '$/components/forms/Input.svelte'
 
@@ -9,12 +9,12 @@
         subject: '',
         message: ''
     }
-    const validationSchema = {
-        name: yup.string().required('Name is Required'),
-        email: yup.string().email('Type a valid Email, please').required('Email is Required'),
-        subject: yup.string().required('Subject is Required'),
-        message: yup.string().required('Message is Required')
-    }
+    const validationSchema = z.object({
+        name: z.string().min(1, 'Name is required'),
+        email: z.string().min(1, 'Email is required').email('Type a valid Email, please'),
+        subject: z.string().min(1, 'Subject is required'),
+        message: z.string().min(1, 'Message is required')
+    })
 </script>
 
 <section id="contact" class="wrapper">

@@ -1,32 +1,15 @@
 <script lang="ts">
     import { formContext } from '$/lib/contexts'
 
-    const { form, handleChange, errors } = formContext() || {}
+    const { errors } = formContext() || {}
 
     export let type: 'number' | 'text' | 'password' | 'textarea' = 'text'
     export let hidden: boolean = false
-    export let value: string | null = null
     export let name: string
     export let label: string = ''
     export let placeholder: string = ''
 
-    let blured = false
-
-    const identifier = name.replaceAll(' ', '-').toLowerCase()
-
-    $: if (form && value) {
-        $form[name] = value
-    }
-
-    const change = (event: any, blur: boolean) => {
-        if (blur) {
-            blured = true
-        }
-
-        if (blured && handleChange) {
-            handleChange(event)
-        }
-    }
+    const identifier = name.replaceAll(' ', '-').toLowerCase().trim()
 </script>
 
 <template>
@@ -35,20 +18,13 @@
         class:error={$errors && $errors[identifier]}
         id={identifier}
         name={identifier}
-        bind:value={$form[identifier]}
-        on:input={(e) => change(e, false)}
-        on:blur={(e) => change(e, true)}
         placeholder={placeholder || label}></textarea>
     {:else}
-        <input {hidden}
+        <input {hidden} {type}
             class:error={$errors && $errors[identifier]}
-            {type}
             min={type === 'number' ? 1 : null}
             id={identifier}
             name={identifier}
-            value={value || (form && $form[identifier])}
-            on:input={(e) => change(e, false)}
-            on:blur={(e) => change(e, true)}
             placeholder={placeholder || label}
         />
     {/if}
@@ -56,7 +32,7 @@
         <label for={identifier}>{label}</label>
     {/if}
     {#if $errors && $errors[identifier]}
-        <span>{$errors[identifier]}</span>
+        <span>{$errors[identifier][0]}</span>
     {/if}
 </template>
 
