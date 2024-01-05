@@ -10,12 +10,14 @@
 
     // TODO: Get Icons dynamically like in TechIcon Component
     const technologies: Record<string, [string, number, typeof Svelte | null][]> = {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Front End': [
             ['Svelte', 90, Svelte],
             ['Typescript', 80, Typescript],
             ['Sass', 85, Sass],
             ['React', 40, React]
         ],
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Back End': [
             ['Node', 60, Node],
             ['Python', 50, Python],

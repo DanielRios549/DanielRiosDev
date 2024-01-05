@@ -6,10 +6,10 @@
     import { page } from '$app/stores'
     import { setFormContext } from '$/lib/contexts'
 
-    type submitValues = Record<string, string>
+    type SubmitValues = Record<string, string>
 
     export let action: string
-    export let submit: ((values: submitValues) => any) | null = null
+    export let submit: ((values: SubmitValues) => any) | null = null
     export let submitText: string = 'Submit'
     export let initialValues: Record<string, any> = {}
     export let validationSchema: z.ZodObject<any> = z.object({})
@@ -21,7 +21,7 @@
         }),
         onSuccess(_, context) {
             if (submit) {
-                const data: submitValues = {}
+                const data: SubmitValues = {}
 
                 for (const control of context.controls || []) {
                     data[control.name] = control.value
