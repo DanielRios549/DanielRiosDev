@@ -3,8 +3,9 @@
     import { login } from '$/lib/validations'
     import Form from '$/components/Form.svelte'
     import Input from '$/components/forms/Input.svelte'
+    import type { z } from 'zod'
 
-    const initialValues = {
+    const initialValues: z.infer<typeof login> = {
         email: '',
         password: ''
     }
@@ -18,7 +19,7 @@
     {:else}
         <Form action="/login" {initialValues} validationSchema={login} submitText="Login">
             <Input type="text" name="email" label="Email"/>
-            <Input type="password" name="password" label="Password" />
+            <Input type="password" name="password" label="Password"/>
         </Form>
     {/if}
 </template>

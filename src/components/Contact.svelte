@@ -2,8 +2,9 @@
     import { contact } from '$lib/validations'
     import Form from '$/components/Form.svelte'
     import Input from '$/components/forms/Input.svelte'
+    import type { z } from 'zod'
 
-    const initialValues = {
+    const initialValues: z.infer<typeof contact> = {
         name: '',
         email: '',
         subject: '',
