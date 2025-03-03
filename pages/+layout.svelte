@@ -3,8 +3,8 @@
     import { browser } from '$app/environment'
     // import { page } from '$app/stores'
     import { onMount } from 'svelte'
-    import Header from '$/components/Header.svelte'
-    import Menu from '$/components/Menu.svelte'
+    import Header from '$/layout/Header.svelte'
+    import Menu from '$/layout/Menu.svelte'
 
     export let data
 
