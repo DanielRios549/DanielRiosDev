@@ -5,10 +5,11 @@ import type { Pages, Options, Option, Texts } from '$/types'
 export async function load({ locals }) {
     const session = await locals.getSession()
 
-    const [projects, textList, optionsList, infoList] = await Promise.all([
+    const [projects, textList, optionsList, messages, infoList] = await Promise.all([
         locals.supabase.from('projects').select('name, stack, repo, link, image'),
         locals.supabase.from('portfolio_texts').select('type, content, html'),
         locals.supabase.from('portfolio_options').select('option, value'),
+        locals.supabase.from('contact').select('id, name, email, subject, message, read'),
         locals.supabase.from('users').select('*').eq('id', session?.user.id || '')
     ])
 
@@ -42,6 +43,7 @@ export async function load({ locals }) {
         images: publicUrl ? publicUrl.replace('/projects', '') : '',
         projects: projects.data || [],
         texts,
+        messages: messages.data || [],
         options
     }
 }

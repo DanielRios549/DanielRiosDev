@@ -35,6 +35,7 @@
         :global {
             form {
                 flex: 1 1 250px;
+                padding: 1rem;
 
                 textarea {
                     background-color: var(--color2);

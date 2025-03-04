@@ -5,11 +5,10 @@
     import { enhance } from '$app/forms'
     import { page } from '$app/stores'
     import { setFormContext } from '$/lib/contexts'
-
-    type SubmitValues = Record<string, string>
+    import type { Data } from '$/types/form'
 
     export let action: string
-    export let submit: ((values: SubmitValues) => any) | null = null
+    export let submit: ((values: Data) => any) | null = null
     export let submitText: string = 'Submit'
     export let initialValues: Record<string, any> = {}
     export let validationSchema: z.ZodObject<any> = z.object({})
@@ -21,7 +20,7 @@
         }),
         onSuccess(_, context) {
             if (submit) {
-                const data: SubmitValues = {}
+                const data: Data = {}
 
                 for (const control of context.controls || []) {
                     data[control.name] = control.value
@@ -37,9 +36,9 @@
 
 <form {action} method="POST" use:config.form use:enhance>
     <slot/>
-    {#if $page.form?.error}
-        <section class="error">
-            <span>{$page.form?.error}</span>
+    {#if $page.form?.message}
+        <section class:show={$page.form?.message} class:error={$page.form?.error}>
+            <span>{$page.form?.message}</span>
         </section>
     {/if}
     <button type="submit">{submitText}</button>
@@ -57,15 +56,18 @@
         section {
             position: relative;
 
-            &:not(.error) {
+            &:not(.show) {
                 display: none;
             }
-            &.error {
+            &.show {
                 @extend %center;
 
-                background-color: var(--error);
+                background-color: var(--highlight);
                 height: 2rem;
                 width: 100%;
+            }
+            &.error {
+                background-color: var(--error);
             }
             button {
                 background-color: transparent;

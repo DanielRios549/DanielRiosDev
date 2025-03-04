@@ -97,14 +97,14 @@
     }
     @media(--large) {
         textarea {
-            max-width: min(100vw, 50rem);
-            min-width: 50rem;
+            max-width: min(100%, 50rem);
+            min-width: 100%;
         }
     }
     @media(--mobile) {
         textarea {
-            max-width: 100vw;
-            min-width: 100vw;
+            max-width: 100%;
+            min-width: 100%;
         }
     }
 </style>

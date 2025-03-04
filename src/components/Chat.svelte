@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { page } from '$app/stores'
     import { fly } from 'svelte/transition'
     import Chat from '$/icons/chat.svg'
 
@@ -16,10 +17,13 @@
     {#if open}
         <section class:open transition:fly={{ y: 10, x: 0, duration: 400 }}>
             <header>
-                <h2>Chat with me</h2>
+                <h2>Messages</h2>
             </header>
-            <p>Feature in development.</p>
-            <p>For now, you can contact me using the <a href="/#contact" on:click={() => (open = false)}>contact form</a>.</p>
+            <ul>
+                {#each $page.data.messages as message}
+                    <li>{message.name}</li>
+                {/each}
+            </ul>
         </section>
     {/if}
 </template>

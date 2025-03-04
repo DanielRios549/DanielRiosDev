@@ -64,7 +64,14 @@
     </menu>
     <ThemeSwitcher/>
     {#if $page.data.session}
-        <span>{$page.data.info?.name || $page.data.session.user.email}</span>
+        <section>
+            <header>
+                <h2>{$page.data.info?.name || $page.data.session.user.email}</h2>
+            </header>
+            <figure>
+                <img src="{$page.data.images}/{$page.data.info.image}" alt="profile">
+            </figure>
+        </section>
     {/if}
 </div>
 
@@ -96,6 +103,26 @@
 
             :--svg {
                 --size: 2rem;
+            }
+        }
+        section {
+            padding-right: 15px;
+            display: flex;
+            gap: 1rem;
+
+            header {
+                h2 {
+                    color: var(--text)
+                }
+            }
+            figure {
+                order: -1;
+                width: 2rem;
+                height: 2rem;
+
+                img {
+                    @extend %imageCover;
+                }
             }
         }
     }
@@ -160,7 +187,7 @@
             gap: 5rem;
 
             &:not(.open) {
-                top: -100%;
+                top: -200%;
                 height: 0;
             }
             ul {
